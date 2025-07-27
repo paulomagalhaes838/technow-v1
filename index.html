@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technowbrasil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      margin-right: 1.5rem;
+      color: #bbb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      background: url('https://source.unsplash.com/1600x600/?technology,news') center/cover;
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #111;
+      display: inline-block;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .card h4 {
+      margin: 0.8rem 0 0.4rem;
+    }
+
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      nav a {
+        margin-right: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Technowbrasil</h1>
+    <nav>
+      <a href="#noticias">Notícias</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Fique por dentro das principais notícias de tecnologia</h2>
+    <p>Inovação, gadgets, startups e tendências do futuro.</p>
+  </section>
+
+  <section id="noticias" class="section">
+    <h3>Últimas Notícias</h3>
+    <div class="news-grid">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?ai,technology" alt="Notícia 1">
+        <h4>Título da Notícia</h4>
+        <p>Resumo da notícia com as informações mais relevantes e link para leitura completa.</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?robotics,innovation" alt="Notícia 2">
+        <h4>Nova tecnologia em IA</h4>
+        <p>A inteligência artificial está transformando o mundo dos negócios e da comunicação.</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?cybersecurity" alt="Notícia 3">
+        <h4>Segurança Digital</h4>
+        <p>Como se proteger dos ataques cibernéticos mais recentes e manter seus dados seguros.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="produtos" class="section">
+    <h3>Produtos em Destaque</h3>
+    <p>Breve descrição dos produtos ou serviços oferecidos. Pode incluir links, imagens e chamadas para ação.</p>
+  </section>
+
+  <section id="contato" class="section">
+    <h3>Contato</h3>
+    <p>Email: contato@technowbrasil.com.br</p>
+    <p>WhatsApp: (00) 99999-0000</p>
+    <p>Redes sociais: Instagram | LinkedIn | YouTube</p>
+  </section>
+
+  <footer>
+    © 2025 Technowbrasil. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
