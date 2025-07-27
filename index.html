@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Technowbrasil - Seu Portal de Tecnologia</title>
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonte e FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
 
   <script>
@@ -36,21 +39,19 @@
 
     #desktop-menu { display: flex; }
     #mobile-menu { display: none; flex-direction: column; }
-    @media (max-width: 768px) {
-      #desktop-menu { display: none; }
-      #mobile-menu { display: flex; }
-    }
+    @media (max-width: 768px) { #desktop-menu { display: none; } #mobile-menu { display: flex; } }
 
-    .header-neon { background: linear-gradient(90deg, #0f0f1c, #121223, #0f0f1c); background-size: 300% 300%; animation: gradientMove 10s ease infinite; box-shadow: 0 0 15px #3ABEFF33; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    /* Header effects, gradient background and glow */
+    .header-neon { background: linear-gradient(90deg, #0f0f1c, #121223, #0f0f1c); background-size: 300% 300%; animation: gradientMove 10s ease infinite; box-shadow: 0 0 15px #3ABEFF33; backdrop-filter: blur(10px); }
     @keyframes gradientMove { 0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
-    .glow-icon:hover { filter: drop-shadow(0 0 5px #3ABEFF); transform: scale(1.1); transition: all 0.3s ease; }
+    .glow-icon:hover { filter: drop-shadow(0 0 5px #3ABEFF); transform: scale(1.1); }
     .logo-neon-shadow { text-shadow: 0 0 10px #3ABEFF99; animation: pulseLogo 2.5s infinite ease-in-out; }
     @keyframes pulseLogo { 0%,100%{ text-shadow: 0 0 10px #3ABEFF99;}50%{ text-shadow: 0 0 20px #3ABEFF;} }
 
     #scroll-bar { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: linear-gradient(90deg, #3ABEFF, #A855F7); z-index: 9999; transition: width 0.2s ease-out; }
 
-    /* Carrinho com animação de slide-in / fade */
-    #cart { visibility: hidden; }
+    /* Carrinho panel animations */
+    #cart { position: fixed; inset: 0; visibility: hidden; }
     #cart.show { visibility: visible; }
     #cart-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); opacity: 0; transition: opacity 0.3s ease-out; }
     #cart-panel { position: absolute; right: 0; top: 0; height: 100%; width: 100%; max-width: 20rem; background: #2d2d2d; transform: translateX(100%); transition: transform 0.3s ease-in-out; }
@@ -112,14 +113,13 @@
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto"></div>
     </section>
 
-    <!-- NOTÍCIAS MELHORADA -->
+    <!-- NOTÍCIAS -->
     <section id="noticias" class="py-20 bg-black text-white px-6" data-aos="fade-up">
       <h2 class="text-3xl text-center font-bold mb-10 text-highlight">📰 Notícias Tecnológicas</h2>
       <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition duration-300" data-aos="fade-up">
           <div class="overflow-hidden">
-            <img src="https://via.placeholder.com/500x250" alt="Nova geração processadores"
-                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" />
+            <img src="https://via.placeholder.com/500x250" alt="Nova geração processadores" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" />
           </div>
           <div class="p-5">
             <h3 class="text-xl font-semibold text-neon group-hover:underline transition">Nova geração de processadores é lançada</h3>
@@ -129,8 +129,7 @@
         </div>
         <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition duration-300" data-aos="fade-up" data-aos-delay="100">
           <div class="overflow-hidden">
-            <img src="https://via.placeholder.com/500x250" alt="Realidade aumentada compras"
-                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" />
+            <img src="https://via.placeholder.com/500x250" alt="Realidade aumentada compras" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" />
           </div>
           <div class="p-5">
             <h3 class="text-xl font-semibold text-neon group-hover:underline transition">Realidade aumentada nas compras online</h3>
@@ -140,8 +139,7 @@
         </div>
         <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition duration-300" data-aos="fade-up" data-aos-delay="200">
           <div class="overflow-hidden">
-            <img src="https://via.placeholder.com/500x250" alt="IA atendimento automatizado"
-                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" />
+            <img src="https://via.placeholder.com/500x250" alt="IA atendimento automatizado" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" />
           </div>
           <div class="p-5">
             <h3 class="text-xl font-semibold text-neon group-hover:underline transition">IA e atendimento automatizado</h3>
@@ -154,9 +152,9 @@
 
   </main>
 
-  <!-- CARRINHO COM ANIMAÇÃO -->
-  <div id="cart" class="fixed inset-0 z-50 flex justify-end">
-    <div id="cart-overlay"></div>
+  <!-- CARRINHO -->
+  <div id="cart">
+    <div id="cart-overlay" onclick="toggleCart()"></div>
     <div id="cart-panel">
       <div class="p-6 h-full flex flex-col">
         <h3 class="text-2xl font-bold text-neon">Carrinho</h3>
@@ -183,14 +181,15 @@
   </footer>
 
   <!-- WHATSAPP FIXO -->
-  <a href="https://wa.me/5511999999999" target="_blank"
-     class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 transition-hover z-50">
+  <a href="https://wa.me/5511999999999" target="_blank" class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 transition-hover z-50">
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- SCRIPTS JS -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+
     const products = [
       { id: 1, name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00', category: 'smartphone', image: 'https://via.placeholder.com/500x300' },
       { id: 2, name: 'Notebook HyperPro', price: 'R$ 5.899,00', category: 'laptop', image: 'https://via.placeholder.com/500x300' },
@@ -201,26 +200,30 @@
     function renderProducts(filter = 'all') {
       const grid = document.getElementById('product-grid');
       grid.innerHTML = '';
-      products.filter(p => filter === 'all' || p.category === filter).forEach(p => {
-        const div = document.createElement('div');
-        div.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1\\.02] transition-hover';
-        div.setAttribute('data-aos', 'zoom-in');
-        div.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover" loading="lazy">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">${p.name}</h3>
-            <p class="text-green-400 font-bold text-lg mb-4">${p.price}</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition-hover" onclick="addToCart({ name: '${p.name}', price: '${p.price}' })">Adicionar ao Carrinho</button>
-          </div>`;
-        grid.appendChild(div);
-      });
+      products.filter(p => filter === 'all' || p.category === filter)
+        .forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition-hover';
+          div.setAttribute('data-aos', 'zoom-in');
+          div.innerHTML = `
+            <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover" loading="lazy">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">${p.name}</h3>
+              <p class="text-green-400 font-bold text-lg mb-4">${p.price}</p>
+              <button onclick="addToCart({ name: '${p.name}', price: '${p.price}' })"
+                class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition-hover">
+                Adicionar ao Carrinho
+              </button>
+            </div>`;
+          grid.appendChild(div);
+        });
     }
+
     function filterCategory(cat) { renderProducts(cat); }
     function addToCart(item) { cart.push(item); updateCart(); }
     function updateCart() {
       document.getElementById('cart-count').textContent = cart.length;
-      const list = document.getElementById('cart-items');
-      list.innerHTML = '';
+      const list = document.getElementById('cart-items'); list.innerHTML = '';
       let total = 0;
       cart.forEach((item, i) => {
         total += parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
@@ -228,13 +231,13 @@
       });
       document.getElementById('total-price').textContent = `R$ ${total.toFixed(2)}`;
     }
-    function removeItem(i) { cart.splice(i,1); updateCart(); }
+
+    function removeItem(i) { cart.splice(i, 1); updateCart(); }
     function toggleCart() {
-      const cartEl = document.getElementById('cart');
-      const open = cartEl.classList.contains('show');
-      if (!open) cartEl.classList.add('show');
-      else cartEl.classList.remove('show');
+      const c = document.getElementById('cart');
+      c.classList.toggle('show');
     }
+
     function toggleTheme() {
       const root = document.documentElement;
       const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -242,6 +245,7 @@
       document.body.classList.toggle('dark', current === 'dark');
       localStorage.setItem('theme', current);
     }
+
     (function initTheme() {
       const saved = localStorage.getItem('theme');
       const prefer = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -249,16 +253,18 @@
       document.documentElement.setAttribute('data-theme', theme);
       document.body.classList.toggle('dark', theme === 'dark');
     })();
-    function toggleMenu(){
-      const m = document.getElementById('mobile-menu');
-      m.style.display = (m.style.display === 'flex' ? 'none' : 'flex');
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
+
     renderProducts();
+
     window.addEventListener('scroll', () => {
-      const s = document.documentElement.scrollTop;
-      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const perc = (s/h)*100;
-      document.getElementById('scroll-bar').style.width = perc + '%';
+      const scroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById('scroll-bar').style.width = ((scroll / height) * 100) + '%';
     });
   </script>
 </body>
