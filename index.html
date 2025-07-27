@@ -15,9 +15,6 @@
   <!-- AOS -->
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/logo-technow.png" />
-
   <script>
     tailwind.config = {
       theme: {
@@ -50,14 +47,14 @@
 
 <body class="bg-dark text-light dark:bg-black dark:text-white">
 
-  <!-- HEADER COM LOGO -->
+  <!-- HEADER -->
   <header class="fixed top-0 w-full bg-dark border-b border-gray-800 z-50 shadow-xl">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-4">
-      <div class="flex items-center gap-3 animate-fadein">
-        <img src="images/logo-technow.png" alt="Technowbrasil" class="h-14 w-auto" />
-        <h1 class="text-2xl font-extrabold tracking-widest text-neon">Technowbrasil</h1>
+    <div class="container mx-auto flex flex-col items-center justify-center px-6 py-4">
+      <div class="flex items-center gap-2 mb-2 animate-fadein">
+        <i class="fas fa-microchip text-neon text-2xl animate-pulse"></i>
+        <h1 class="text-2xl font-extrabold tracking-widest neon-text">Technowbrasil</h1>
       </div>
-      <nav class="flex gap-6 font-semibold text-sm mt-4 md:mt-0">
+      <nav class="flex gap-6 font-semibold text-sm">
         <a href="#categorias" class="hover:text-neon transition">Categorias</a>
         <a href="#produtos" class="hover:text-neon transition">Produtos</a>
         <a href="#noticias" class="hover:text-neon transition">Notícias</a>
@@ -88,7 +85,7 @@
     <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark" data-aos="fade-up">
       <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Produtos em Destaque</h2>
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        <!-- Cards via JS -->
+        <!-- Cards gerados via JS -->
       </div>
     </section>
 
@@ -140,6 +137,7 @@
                class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition">Enviar Mensagem</button>
       </form>
     </section>
+
   </main>
 
   <!-- CARRINHO -->
@@ -155,14 +153,11 @@
     </div>
   </div>
 
-  <!-- RODAPÉ COM LOGO -->
+  <!-- RODAPÉ -->
   <footer class="bg-dark text-white py-10">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 gap-6">
-      <div class="flex items-center gap-3">
-        <img src="images/logo-technow.png" alt="Logo Technowbrasil" class="h-10 w-auto" />
-        <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
-      </div>
-      <div class="flex gap-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+      <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
+      <div class="flex gap-4 mt-4 md:mt-0">
         <a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a>
         <a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a>
@@ -197,7 +192,7 @@
           const div = document.createElement('div');
           div.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition';
           div.setAttribute('data-aos', 'zoom-in');
-          div.innerHTML = `
+          div.innerHTML = 
             <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover">
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">${p.name}</h3>
@@ -206,7 +201,7 @@
                 onclick="addToCart({ name: '${p.name}', price: '${p.price}' })">
                 Adicionar ao Carrinho
               </button>
-            </div>`;
+            </div>;
           grid.appendChild(div);
         });
     }
@@ -226,18 +221,19 @@
       list.innerHTML = '';
       let total = 0;
       cart.forEach((item,i) => {
-        total += parseFloat(item.price.replace('R$ ', '').replace('.', '').replace(',', '.'));
-        list.innerHTML += `<li class="flex justify-between"><span>${item.name}</span><span>${item.price}</span>
-          <button class="text-red-500 ml-2" onclick="removeItem(${i})">Remover</button></li>`;
+        total += parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+        list.innerHTML += <li class="flex justify-between"><span>${item.name}</span><span>${item.price}</span>
+          <button class="text-red-500 ml-2" onclick="removeItem(${i})">Remover</button></li>;
       });
-      document.getElementById('total-price').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      document.getElementById('total-price').textContent = R$ ${total.toFixed(2)};
     }
 
     function removeItem(i) { cart.splice(i,1); updateCart(); }
 
     function toggleCart() { document.getElementById('cart').classList.toggle('hidden'); }
 
+    // Inicializa
     renderProducts();
   </script>
 </body>
-</html>
+</html> 
