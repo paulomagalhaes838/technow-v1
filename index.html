@@ -1,132 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Technowbrasil</title>
-  <meta name="description" content="Technowbrasil - Produtos tecnológicos e notícias do setor no Brasil.">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fontes e ícones -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
 
-  <!-- Tema escuro/claro -->
   <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Manrope', 'sans-serif'] },
+          colors: {
+            dark: '#0F0F1C',
+            neon: '#3ABEFF',
+            highlight: '#A855F7',
+            light: '#F5F5F5'
+          }
+        }
+      }
     }
   </script>
 
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Manrope', sans-serif; }
   </style>
 </head>
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition duration-300">
+<body class="bg-dark text-light dark:bg-black dark:text-white">
 
   <!-- HEADER -->
-  <header class="fixed top-0 w-full bg-[#0D1B2A] text-white shadow z-50">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold">Technowbrasil</h1>
-      <nav class="hidden md:flex gap-6">
-        <a href="#produtos" class="hover:text-purple-400">Produtos</a>
-        <a href="#noticias" class="hover:text-purple-400">Notícias</a>
-        <a href="#contato" class="hover:text-purple-400">Contato</a>
+  <header class="fixed top-0 w-full bg-dark border-b border-gray-800 z-50 shadow-xl">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <div class="flex items-center gap-2">
+        <i class="fas fa-microchip text-neon text-2xl"></i>
+        <h1 class="text-xl font-bold tracking-widest">Technowbrasil</h1>
+      </div>
+      <nav class="hidden md:flex space-x-6 font-semibold text-sm">
+        <a href="#produtos" class="hover:text-neon transition">Produtos</a>
+        <a href="#noticias" class="hover:text-neon transition">Notícias</a>
+        <a href="#contato" class="hover:text-neon transition">Contato</a>
       </nav>
     </div>
   </header>
 
+  <!-- MAIN -->
   <main class="pt-24">
 
     <!-- PRODUTOS -->
-    <section id="produtos" class="py-16 bg-white dark:bg-gray-900">
-      <h2 class="text-3xl font-bold text-center mb-8">Produtos em Destaque</h2>
-      <div class="grid md:grid-cols-3 gap-8 px-4">
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded p-4 hover:scale-105 transition transform">
-          <img src="https://via.placeholder.com/300x200" alt="Produto 1" class="w-full h-48 object-cover rounded mb-4">
-          <h3 class="text-xl font-semibold">Smartphone XYZ</h3>
-          <p class="text-green-500 font-bold">R$ 2.499,00</p>
-          <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar</button>
+    <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
+      <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Produtos em Destaque</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <!-- Card -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
+          <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Smartphone TechOne 5G</h3>
+            <p class="text-green-400 font-bold text-lg mb-4">R$ 3.299,00</p>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
+          </div>
         </div>
-
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded p-4 hover:scale-105 transition transform">
-          <img src="https://via.placeholder.com/300x200" alt="Produto 2" class="w-full h-48 object-cover rounded mb-4">
-          <h3 class="text-xl font-semibold">Notebook Pro 15"</h3>
-          <p class="text-green-500 font-bold">R$ 5.799,00</p>
-          <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar</button>
+        <!-- Repetir cards -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
+          <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Notebook HyperPro</h3>
+            <p class="text-green-400 font-bold text-lg mb-4">R$ 5.899,00</p>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
+          </div>
         </div>
-
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded p-4 hover:scale-105 transition transform">
-          <img src="https://via.placeholder.com/300x200" alt="Produto 3" class="w-full h-48 object-cover rounded mb-4">
-          <h3 class="text-xl font-semibold">Fone Bluetooth Pro</h3>
-          <p class="text-green-500 font-bold">R$ 399,00</p>
-          <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar</button>
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
+          <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Smartwatch Active X</h3>
+            <p class="text-green-400 font-bold text-lg mb-4">R$ 799,00</p>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- NOTÍCIAS -->
-    <section id="noticias" class="bg-gray-100 dark:bg-gray-800 py-16">
-      <h2 class="text-3xl font-bold text-center mb-10">Últimas Notícias</h2>
-      <div class="grid md:grid-cols-3 gap-6 px-4">
-        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow hover:shadow-xl transition">
-          <img src="https://via.placeholder.com/300x150" alt="Notícia 1" class="rounded mb-3 w-full h-40 object-cover">
-          <h3 class="font-semibold text-xl mb-2">Novo chip revoluciona o desempenho mobile</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm">Confira como essa inovação pode mudar o mercado...</p>
+    <section id="noticias" class="py-20 bg-black text-white px-6">
+      <h2 class="text-3xl text-center font-bold mb-10 text-highlight">Notícias Tecnológicas</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
+          <h3 class="text-xl font-semibold">Nova geração de processadores é lançada</h3>
+          <p class="text-sm mt-2 text-gray-400">Acompanhe como essa mudança impacta celulares e notebooks.</p>
         </div>
-
-        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow hover:shadow-xl transition">
-          <img src="https://via.placeholder.com/300x150" alt="Notícia 2" class="rounded mb-3 w-full h-40 object-cover">
-          <h3 class="font-semibold text-xl mb-2">Lançamento do Notebook UltraLight</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm">Mais leve, mais rápido e com bateria prolongada.</p>
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
+          <h3 class="text-xl font-semibold">Realidade aumentada nas lojas online</h3>
+          <p class="text-sm mt-2 text-gray-400">Conheça as novas experiências digitais de compra.</p>
         </div>
-
-        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow hover:shadow-xl transition">
-          <img src="https://via.placeholder.com/300x150" alt="Notícia 3" class="rounded mb-3 w-full h-40 object-cover">
-          <h3 class="font-semibold text-xl mb-2">Como a IA está mudando o e-commerce</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm">Tendências e oportunidades para os próximos anos.</p>
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition">
+          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
+          <h3 class="text-xl font-semibold">Como IA está transformando o atendimento</h3>
+          <p class="text-sm mt-2 text-gray-400">Chatbots inteligentes dominam o pós-venda no e-commerce.</p>
         </div>
       </div>
     </section>
 
-    <!-- CONTATO / RODAPÉ -->
-    <footer id="contato" class="bg-[#0D1B2A] text-white py-8">
-      <div class="container mx-auto flex flex-col md:flex-row justify-between px-4 items-center">
-        <div class="mb-4 md:mb-0">
-          <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
-        </div>
-        <div class="flex gap-4">
-          <a href="#" class="hover:text-purple-400"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" class="hover:text-purple-400"><i class="fab fa-instagram fa-lg"></i></a>
-          <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-green-400"><i class="fab fa-whatsapp fa-lg"></i></a>
-        </div>
-      </div>
-    </footer>
   </main>
 
-  <!-- BOTÃO TEMA ESCURO/CLARO -->
-  <button id="toggle-theme" class="fixed bottom-5 right-5 p-3 rounded-full bg-gray-800 text-white shadow-lg hover:bg-gray-700 z-50">
-    🌗
-  </button>
+  <!-- RODAPÉ -->
+  <footer id="contato" class="bg-dark text-white py-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+      <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
 
-  <!-- BOTÃO WHATSAPP FIXO -->
+  <!-- WHATSAPP FIXO -->
   <a href="https://wa.me/5511999999999" target="_blank"
-     class="fixed bottom-5 left-5 bg-green-500 p-3 rounded-full text-white text-2xl shadow-lg hover:bg-green-600 z-50">
+     class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 z-50">
     💬
   </a>
-
-  <script>
-    const toggleTheme = document.getElementById('toggle-theme');
-    toggleTheme.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    });
-  </script>
 
 </body>
 </html>
