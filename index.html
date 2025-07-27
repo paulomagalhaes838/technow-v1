@@ -8,18 +8,18 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fontes e ícones -->
+  <!-- Fonte e FontAwesome -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
 
-  <!-- AOS (animações ao rolar) -->
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Manrope', 'sans-serif'] },
+          fontFamily: { sans: ['Manrope','sans-serif'] },
           colors: {
             dark: '#0F0F1C',
             neon: '#3ABEFF',
@@ -33,26 +33,15 @@
 
   <style>
     body { font-family: 'Manrope', sans-serif; }
-
-    @keyframes fadein {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadein {0% {opacity:0; transform:translateY(-10px);}100% {opacity:1; transform:translateY(0);} }
     .animate-fadein { animation: fadein 1s ease-out forwards; }
-
     .neon-text {
-      background: linear-gradient(to right, #3ABEFF, #A855F7, #3ABEFF);
-      background-size: 300% auto;
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
+      background: linear-gradient(to right,#3ABEFF,#A855F7,#3ABEFF);
+      background-size:300% auto;color:transparent;
+      background-clip:text;-webkit-background-clip:text;
       animation: glowmove 4s linear infinite;
     }
-    @keyframes glowmove {
-      0% { background-position: 0% center; }
-      50% { background-position: 100% center; }
-      100% { background-position: 0% center; }
-    }
+    @keyframes glowmove {0%{background-position:0% center;}50%{background-position:100% center;}100%{background-position:0% center;}}
   </style>
 </head>
 
@@ -85,52 +74,18 @@
     <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark" data-aos="fade-up">
       <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Categorias</h2>
       <div class="flex justify-center flex-wrap gap-4 max-w-xl mx-auto">
-        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Smartphones</button>
-        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Laptops</button>
-        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Acessórios</button>
+        <button onclick="filterCategory('all')" class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Todas</button>
+        <button onclick="filterCategory('smartphone')" class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Smartphones</button>
+        <button onclick="filterCategory('laptop')" class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Laptops</button>
+        <button onclick="filterCategory('acessorio')" class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Acessórios</button>
       </div>
     </section>
 
     <!-- PRODUTOS -->
     <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark" data-aos="fade-up">
       <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Produtos em Destaque</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        <!-- Produto 1 -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
-          <img src="https://via.placeholder.com/500x300" alt="Produto 1" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Smartphone TechOne 5G</h3>
-            <p class="text-green-400 font-bold text-lg mb-4">R$ 3.299,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition"
-              onclick="addToCart({ name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00' })">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </div>
-        <!-- Produto 2 -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
-          <img src="https://via.placeholder.com/500x300" alt="Produto 2" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Notebook HyperPro</h3>
-            <p class="text-green-400 font-bold text-lg mb-4">R$ 5.899,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition"
-              onclick="addToCart({ name: 'Notebook HyperPro', price: 'R$ 5.899,00' })">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </div>
-        <!-- Produto 3 -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
-          <img src="https://via.placeholder.com/500x300" alt="Produto 3" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Smartwatch Active X</h3>
-            <p class="text-green-400 font-bold text-lg mb-4">R$ 799,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition"
-              onclick="addToCart({ name: 'Smartwatch Active X', price: 'R$ 799,00' })">
-              Adicionar ao Carrinho
-            </button>
-          </div>
-        </div>
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <!-- Cards gerados via JS -->
       </div>
     </section>
 
@@ -151,7 +106,7 @@
         <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
           <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
           <h3 class="text-xl font-semibold">IA e atendimento automatizado</h3>
-          <p class="text-sm mt-2 text-gray-400">Chatbots para e-commerce moderno.</p>
+          <p class="text-sm mt-2 text-gray-400">Chatbots para e‑commerce moderno.</p>
         </div>
       </div>
     </section>
@@ -159,7 +114,7 @@
     <!-- NEWSLETTER -->
     <section id="newsletter" class="py-16 px-6 bg-black text-white" data-aos="fade-up">
       <h2 class="text-3xl font-bold text-center mb-4 text-highlight">Receba novidades por e-mail</h2>
-      <p class="text-center mb-6 text-gray-400">Cadastre-se para promoções e lançamentos</p>
+      <p class="text-center mb-6 text-gray-400">Cadastre‑se para promoções e lançamentos</p>
       <form class="max-w-md mx-auto flex gap-2">
         <input type="email" placeholder="Seu e-mail" required
                class="flex-1 p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon" />
@@ -168,7 +123,7 @@
       </form>
     </section>
 
-    <!-- FORMULÁRIO DE CONTATO -->
+    <!-- CONTATO -->
     <section id="contato" class="py-16 px-6 bg-gray-900 text-white" data-aos="fade-up">
       <h2 class="text-3xl font-bold text-center mb-8 text-neon">Fale com a gente</h2>
       <form class="max-w-2xl mx-auto grid gap-6">
@@ -185,7 +140,7 @@
 
   </main>
 
-  <!-- CARRINHO LATERAL -->
+  <!-- CARRINHO -->
   <div id="cart" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
     <div class="bg-gray-800 w-full sm:w-80 p-6">
       <h3 class="text-2xl font-bold text-neon">Carrinho</h3>
@@ -210,34 +165,75 @@
     </div>
   </footer>
 
-  <!-- WHATSAPP FIXO -->
+  <!-- WhatsApp fixo -->
   <a href="https://wa.me/5511999999999" target="_blank"
      class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 z-50">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Scripts AOS e carrinho -->
+  <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
 
+    const products = [
+      { id: 1, name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00', category: 'smartphone', image: 'https://via.placeholder.com/500x300' },
+      { id: 2, name: 'Notebook HyperPro', price: 'R$ 5.899,00', category: 'laptop', image: 'https://via.placeholder.com/500x300' },
+      { id: 3, name: 'Smartwatch Active X', price: 'R$ 799,00', category: 'acessorio', image: 'https://via.placeholder.com/500x300' }
+    ];
+
     let cart = [];
-    function addToCart(item) {
-      cart.push(item); updateCart();
+
+    function renderProducts(filter = 'all') {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+      products.filter(p => filter === 'all' || p.category === filter)
+        .forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition';
+          div.setAttribute('data-aos', 'zoom-in');
+          div.innerHTML = `
+            <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2">${p.name}</h3>
+              <p class="text-green-400 font-bold text-lg mb-4">${p.price}</p>
+              <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition"
+                onclick="addToCart({ name: '${p.name}', price: '${p.price}' })">
+                Adicionar ao Carrinho
+              </button>
+            </div>`;
+          grid.appendChild(div);
+        });
     }
+
+    function filterCategory(cat) {
+      renderProducts(cat);
+    }
+
+    function addToCart(item) {
+      cart.push(item);
+      updateCart();
+    }
+
     function updateCart() {
       document.getElementById('cart-count').textContent = cart.length;
       const list = document.getElementById('cart-items');
       list.innerHTML = '';
       let total = 0;
-      cart.forEach((item, i) => {
-        total += parseFloat(item.price.replace('R$', '').replace(',', '.'));
-        list.innerHTML += `<li class="flex justify-between"> <span>${item.name}</span><span>${item.price}</span> <button class="text-red-500 ml-2" onclick="removeItem(${i})">Remover</button></li>`;
+      cart.forEach((item,i) => {
+        total += parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+        list.innerHTML += `<li class="flex justify-between"><span>${item.name}</span><span>${item.price}</span>
+          <button class="text-red-500 ml-2" onclick="removeItem(${i})">Remover</button></li>`;
       });
       document.getElementById('total-price').textContent = `R$ ${total.toFixed(2)}`;
     }
-    function removeItem(i) { cart.splice(i, 1); updateCart(); }
+
+    function removeItem(i) { cart.splice(i,1); updateCart(); }
+
     function toggleCart() { document.getElementById('cart').classList.toggle('hidden'); }
+
+    // Inicializa
+    renderProducts();
   </script>
 </body>
 </html>
