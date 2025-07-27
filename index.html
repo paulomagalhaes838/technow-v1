@@ -8,9 +8,12 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonte moderna -->
+  <!-- Fontes e ícones -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
+
+  <!-- AOS (animações ao rolar) -->
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -50,38 +53,36 @@
       50% { background-position: 100% center; }
       100% { background-position: 0% center; }
     }
-
-    @media (max-width: 768px) {
-      nav { display: none; }
-    }
   </style>
 </head>
+
 <body class="bg-dark text-light dark:bg-black dark:text-white">
 
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-dark border-b border-gray-800 z-50 shadow-xl">
-    <div class="container mx-auto flex justify-between items-center px-6 py-3">
-      <div class="flex items-center gap-2 animate-fadein">
+    <div class="container mx-auto flex flex-col items-center justify-center px-6 py-4">
+      <div class="flex items-center gap-2 mb-2 animate-fadein">
         <i class="fas fa-microchip text-neon text-2xl animate-pulse"></i>
         <h1 class="text-2xl font-extrabold tracking-widest neon-text">Technowbrasil</h1>
       </div>
       <nav class="flex gap-6 font-semibold text-sm">
-        <a href="#produtos" class="hover:text-neon">Produtos</a>
-        <a href="#noticias" class="hover:text-neon">Notícias</a>
-        <a href="#contato" class="hover:text-neon">Contato</a>
+        <a href="#categorias" class="hover:text-neon transition">Categorias</a>
+        <a href="#produtos" class="hover:text-neon transition">Produtos</a>
+        <a href="#noticias" class="hover:text-neon transition">Notícias</a>
+        <a href="#newsletter" class="hover:text-neon transition">Newsletter</a>
+        <a href="#contato" class="hover:text-neon transition">Contato</a>
       </nav>
-      <button onclick="toggleCart()" class="relative">
+      <button onclick="toggleCart()" class="relative mt-4 md:mt-0">
         <i class="fas fa-shopping-cart text-neon text-2xl"></i>
         <span id="cart-count" class="absolute -top-1 -right-2 bg-red-500 text-white rounded-full text-xs px-2">0</span>
       </button>
     </div>
   </header>
 
-  <!-- MAIN -->
-  <main class="pt-20">
+  <main class="pt-24">
 
     <!-- CATEGORIAS -->
-    <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
+    <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark" data-aos="fade-up">
       <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Categorias</h2>
       <div class="flex justify-center flex-wrap gap-4 max-w-xl mx-auto">
         <button class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Smartphones</button>
@@ -91,12 +92,12 @@
     </section>
 
     <!-- PRODUTOS -->
-    <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
+    <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark" data-aos="fade-up">
       <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Produtos em Destaque</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        <!-- SmartPhone -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
-          <img src="https://via.placeholder.com/500x300" alt="Smartphone TechOne 5G" class="w-full h-48 object-cover">
+        <!-- Produto 1 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
+          <img src="https://via.placeholder.com/500x300" alt="Produto 1" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartphone TechOne 5G</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 3.299,00</p>
@@ -106,9 +107,9 @@
             </button>
           </div>
         </div>
-        <!-- Notebook -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
-          <img src="https://via.placeholder.com/500x300" alt="Notebook HyperPro" class="w-full h-48 object-cover">
+        <!-- Produto 2 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
+          <img src="https://via.placeholder.com/500x300" alt="Produto 2" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Notebook HyperPro</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 5.899,00</p>
@@ -118,9 +119,9 @@
             </button>
           </div>
         </div>
-        <!-- Smartwatch -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
-          <img src="https://via.placeholder.com/500x300" alt="Smartwatch Active X" class="w-full h-48 object-cover">
+        <!-- Produto 3 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
+          <img src="https://via.placeholder.com/500x300" alt="Produto 3" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartwatch Active X</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 799,00</p>
@@ -133,25 +134,72 @@
       </div>
     </section>
 
+    <!-- NOTÍCIAS -->
+    <section id="noticias" class="py-20 bg-black text-white px-6" data-aos="fade-up">
+      <h2 class="text-3xl text-center font-bold mb-10 text-highlight">Notícias Tecnológicas</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up">
+          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
+          <h3 class="text-xl font-semibold">Nova geração de processadores é lançada</h3>
+          <p class="text-sm mt-2 text-gray-400">Como isso vai impactar o mercado?</p>
+        </div>
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
+          <h3 class="text-xl font-semibold">Realidade aumentada nas compras online</h3>
+          <p class="text-sm mt-2 text-gray-400">Experiências inovadoras para o cliente.</p>
+        </div>
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
+          <h3 class="text-xl font-semibold">IA e atendimento automatizado</h3>
+          <p class="text-sm mt-2 text-gray-400">Chatbots para e-commerce moderno.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter" class="py-16 px-6 bg-black text-white" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-4 text-highlight">Receba novidades por e-mail</h2>
+      <p class="text-center mb-6 text-gray-400">Cadastre-se para promoções e lançamentos</p>
+      <form class="max-w-md mx-auto flex gap-2">
+        <input type="email" placeholder="Seu e-mail" required
+               class="flex-1 p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon" />
+        <button type="submit"
+               class="bg-neon text-black font-bold px-5 rounded hover:bg-highlight transition">Inscrever</button>
+      </form>
+    </section>
+
+    <!-- FORMULÁRIO DE CONTATO -->
+    <section id="contato" class="py-16 px-6 bg-gray-900 text-white" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8 text-neon">Fale com a gente</h2>
+      <form class="max-w-2xl mx-auto grid gap-6">
+        <input type="text" placeholder="Seu nome"
+               class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon" />
+        <input type="email" placeholder="Seu e-mail"
+               class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon" />
+        <textarea rows="5" placeholder="Sua mensagem..."
+               class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon"></textarea>
+        <button type="submit"
+               class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition">Enviar Mensagem</button>
+      </form>
+    </section>
+
   </main>
 
   <!-- CARRINHO LATERAL -->
   <div id="cart" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-    <div class="bg-gray-800 w-4/5 sm:w-80 p-6">
+    <div class="bg-gray-800 w-full sm:w-80 p-6">
       <h3 class="text-2xl font-bold text-neon">Carrinho</h3>
       <ul id="cart-items" class="mt-6 max-h-60 overflow-y-auto text-white space-y-2"></ul>
       <div class="mt-4 text-white">
         <h4 class="font-bold">Total: <span id="total-price">R$ 0.00</span></h4>
-        <button class="bg-neon text-black font-bold py-3 w-full rounded mt-4 hover:bg-highlight transition">
-          Finalizar Compra
-        </button>
+        <button class="bg-neon text-black font-bold py-3 w-full rounded mt-4 hover:bg-highlight transition">Finalizar Compra</button>
       </div>
       <button class="text-white mt-6" onclick="toggleCart()">Fechar</button>
     </div>
   </div>
 
   <!-- RODAPÉ -->
-  <footer id="contato" class="bg-dark text-white py-10">
+  <footer class="bg-dark text-white py-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
       <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
       <div class="flex gap-4 mt-4 md:mt-0">
@@ -168,27 +216,28 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- Scripts AOS e carrinho -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    // Gerenciamento do carrinho
+    AOS.init({ duration: 800, once: true });
+
     let cart = [];
     function addToCart(item) {
       cart.push(item); updateCart();
     }
     function updateCart() {
-      const cartItems = document.getElementById('cart-items');
-      const countSpan = document.getElementById('cart-count');
-      const totalPrice = document.getElementById('total-price');
-      cartItems.innerHTML = ''; countSpan.textContent = cart.length;
+      document.getElementById('cart-count').textContent = cart.length;
+      const list = document.getElementById('cart-items');
+      list.innerHTML = '';
       let total = 0;
-      cart.forEach((item, idx) => {
-        cartItems.innerHTML += `<li class="flex justify-between"><span>${item.name}</span><span>${item.price}</span><button class="text-red-500 ml-2" onclick="removeItem(${idx})">Remover</button></li>`;
+      cart.forEach((item, i) => {
         total += parseFloat(item.price.replace('R$', '').replace(',', '.'));
+        list.innerHTML += `<li class="flex justify-between"> <span>${item.name}</span><span>${item.price}</span> <button class="text-red-500 ml-2" onclick="removeItem(${i})">Remover</button></li>`;
       });
-      totalPrice.textContent = `R$ ${total.toFixed(2)}`;
+      document.getElementById('total-price').textContent = `R$ ${total.toFixed(2)}`;
     }
-    function removeItem(idx) { cart.splice(idx, 1); updateCart(); }
+    function removeItem(i) { cart.splice(i, 1); updateCart(); }
     function toggleCart() { document.getElementById('cart').classList.toggle('hidden'); }
   </script>
-
 </body>
 </html>
