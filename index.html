@@ -1,201 +1,132 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Technowbrasil</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Technowbrasil - Produtos tecnológicos e notícias do setor no Brasil.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fontes e ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
+
+  <!-- Tema escuro/claro -->
+  <script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
+
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f5f7fa;
-      color: #2c3e50;
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: #1b1f3b;
-      color: #fff;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
-    nav {
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      margin-right: 1.5rem;
-      color: #ccc;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #fff;
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url('https://source.unsplash.com/1600x600/?technology,news') center/cover no-repeat;
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-
-    .hero h2 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #ddd;
-    }
-
-    .section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section h3 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid #1b1f3b;
-      padding-left: 1rem;
-      color: #1b1f3b;
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .card h4 {
-      margin: 1rem 0 0.5rem;
-      color: #333;
-    }
-
-    .card p {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    footer {
-      background-color: #1b1f3b;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-
-      nav a {
-        margin-right: 1rem;
-        font-size: 0.95rem;
-      }
-
-      .hero h2 {
-        font-size: 2rem;
-      }
-
-      .section h3 {
-        font-size: 1.6rem;
-      }
-    }
+    body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition duration-300">
 
-  <header>
-    <h1>Technowbrasil</h1>
-    <nav>
-      <a href="#noticias">Notícias</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#contato">Contato</a>
-    </nav>
+  <!-- HEADER -->
+  <header class="fixed top-0 w-full bg-[#0D1B2A] text-white shadow z-50">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">Technowbrasil</h1>
+      <nav class="hidden md:flex gap-6">
+        <a href="#produtos" class="hover:text-purple-400">Produtos</a>
+        <a href="#noticias" class="hover:text-purple-400">Notícias</a>
+        <a href="#contato" class="hover:text-purple-400">Contato</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Fique por dentro das principais notícias de tecnologia</h2>
-    <p>Inovação, gadgets, startups e tendências do futuro.</p>
-  </section>
+  <main class="pt-24">
 
-  <section id="noticias" class="section">
-    <h3>Últimas Notícias</h3>
-    <div class="news-grid">
-      <div class="card">
-        <img src="https://source.unsplash.com/400x250/?ai,technology" alt="Notícia 1">
-        <h4>Título da Notícia</h4>
-        <p>Resumo da notícia com as informações mais relevantes e link para leitura completa.</p>
+    <!-- PRODUTOS -->
+    <section id="produtos" class="py-16 bg-white dark:bg-gray-900">
+      <h2 class="text-3xl font-bold text-center mb-8">Produtos em Destaque</h2>
+      <div class="grid md:grid-cols-3 gap-8 px-4">
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded p-4 hover:scale-105 transition transform">
+          <img src="https://via.placeholder.com/300x200" alt="Produto 1" class="w-full h-48 object-cover rounded mb-4">
+          <h3 class="text-xl font-semibold">Smartphone XYZ</h3>
+          <p class="text-green-500 font-bold">R$ 2.499,00</p>
+          <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar</button>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded p-4 hover:scale-105 transition transform">
+          <img src="https://via.placeholder.com/300x200" alt="Produto 2" class="w-full h-48 object-cover rounded mb-4">
+          <h3 class="text-xl font-semibold">Notebook Pro 15"</h3>
+          <p class="text-green-500 font-bold">R$ 5.799,00</p>
+          <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar</button>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded p-4 hover:scale-105 transition transform">
+          <img src="https://via.placeholder.com/300x200" alt="Produto 3" class="w-full h-48 object-cover rounded mb-4">
+          <h3 class="text-xl font-semibold">Fone Bluetooth Pro</h3>
+          <p class="text-green-500 font-bold">R$ 399,00</p>
+          <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Comprar</button>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://source.unsplash.com/400x250/?robotics,innovation" alt="Notícia 2">
-        <h4>Nova tecnologia em IA</h4>
-        <p>A inteligência artificial está transformando o mundo dos negócios e da comunicação.</p>
+    </section>
+
+    <!-- NOTÍCIAS -->
+    <section id="noticias" class="bg-gray-100 dark:bg-gray-800 py-16">
+      <h2 class="text-3xl font-bold text-center mb-10">Últimas Notícias</h2>
+      <div class="grid md:grid-cols-3 gap-6 px-4">
+        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow hover:shadow-xl transition">
+          <img src="https://via.placeholder.com/300x150" alt="Notícia 1" class="rounded mb-3 w-full h-40 object-cover">
+          <h3 class="font-semibold text-xl mb-2">Novo chip revoluciona o desempenho mobile</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Confira como essa inovação pode mudar o mercado...</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow hover:shadow-xl transition">
+          <img src="https://via.placeholder.com/300x150" alt="Notícia 2" class="rounded mb-3 w-full h-40 object-cover">
+          <h3 class="font-semibold text-xl mb-2">Lançamento do Notebook UltraLight</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Mais leve, mais rápido e com bateria prolongada.</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow hover:shadow-xl transition">
+          <img src="https://via.placeholder.com/300x150" alt="Notícia 3" class="rounded mb-3 w-full h-40 object-cover">
+          <h3 class="font-semibold text-xl mb-2">Como a IA está mudando o e-commerce</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Tendências e oportunidades para os próximos anos.</p>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://source.unsplash.com/400x250/?cybersecurity" alt="Notícia 3">
-        <h4>Segurança Digital</h4>
-        <p>Como se proteger dos ataques cibernéticos mais recentes e manter seus dados seguros.</p>
+    </section>
+
+    <!-- CONTATO / RODAPÉ -->
+    <footer id="contato" class="bg-[#0D1B2A] text-white py-8">
+      <div class="container mx-auto flex flex-col md:flex-row justify-between px-4 items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
+        </div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-purple-400"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="hover:text-purple-400"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-green-400"><i class="fab fa-whatsapp fa-lg"></i></a>
+        </div>
       </div>
-    </div>
-  </section>
+    </footer>
+  </main>
 
-  <section id="produtos" class="section">
-    <h3>Produtos em Destaque</h3>
-    <p>Breve descrição dos produtos ou serviços oferecidos. Pode incluir links, imagens e chamadas para ação.</p>
-  </section>
+  <!-- BOTÃO TEMA ESCURO/CLARO -->
+  <button id="toggle-theme" class="fixed bottom-5 right-5 p-3 rounded-full bg-gray-800 text-white shadow-lg hover:bg-gray-700 z-50">
+    🌗
+  </button>
 
-  <section id="contato" class="section">
-    <h3>Contato</h3>
-    <p>Email: contato@technowbrasil.com.br</p>
-    <p>WhatsApp: (00) 99999-0000</p>
-    <p>Redes sociais: Instagram | LinkedIn | YouTube</p>
-  </section>
+  <!-- BOTÃO WHATSAPP FIXO -->
+  <a href="https://wa.me/5511999999999" target="_blank"
+     class="fixed bottom-5 left-5 bg-green-500 p-3 rounded-full text-white text-2xl shadow-lg hover:bg-green-600 z-50">
+    💬
+  </a>
 
-  <footer>
-    © 2025 Technowbrasil. Todos os direitos reservados.
-  </footer>
+  <script>
+    const toggleTheme = document.getElementById('toggle-theme');
+    toggleTheme.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+  </script>
 
 </body>
 </html>
