@@ -137,7 +137,6 @@
                class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition">Enviar Mensagem</button>
       </form>
     </section>
-
   </main>
 
   <!-- CARRINHO -->
@@ -192,7 +191,7 @@
           const div = document.createElement('div');
           div.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition';
           div.setAttribute('data-aos', 'zoom-in');
-          div.innerHTML = 
+          div.innerHTML = `
             <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover">
             <div class="p-6">
               <h3 class="text-xl font-semibold mb-2">${p.name}</h3>
@@ -201,7 +200,7 @@
                 onclick="addToCart({ name: '${p.name}', price: '${p.price}' })">
                 Adicionar ao Carrinho
               </button>
-            </div>;
+            </div>`;
           grid.appendChild(div);
         });
     }
@@ -222,18 +221,17 @@
       let total = 0;
       cart.forEach((item,i) => {
         total += parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
-        list.innerHTML += <li class="flex justify-between"><span>${item.name}</span><span>${item.price}</span>
-          <button class="text-red-500 ml-2" onclick="removeItem(${i})">Remover</button></li>;
+        list.innerHTML += `<li class="flex justify-between"><span>${item.name}</span><span>${item.price}</span>
+          <button class="text-red-500 ml-2" onclick="removeItem(${i})">Remover</button></li>`;
       });
-      document.getElementById('total-price').textContent = R$ ${total.toFixed(2)};
+      document.getElementById('total-price').textContent = `R$ ${total.toFixed(2)}`;
     }
 
     function removeItem(i) { cart.splice(i,1); updateCart(); }
 
     function toggleCart() { document.getElementById('cart').classList.toggle('hidden'); }
 
-    // Inicializa
     renderProducts();
   </script>
 </body>
-</html> 
+</html>
