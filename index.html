@@ -29,6 +29,39 @@
         }
       }
     }
+
+    // Função para gerenciar o carrinho
+    let cart = [];
+
+    function addToCart(product) {
+      cart.push(product);
+      updateCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cart-items');
+      cartList.innerHTML = '';
+
+      cart.forEach((item, index) => {
+        const cartItem = document.createElement('li');
+        cartItem.classList.add('flex', 'justify-between', 'items-center', 'py-2', 'border-b', 'border-gray-700');
+        cartItem.innerHTML = `
+          <span>${item.name}</span>
+          <span>R$ ${item.price}</span>
+          <button class="text-red-500" onclick="removeFromCart(${index})">Remover</button>
+        `;
+        cartList.appendChild(cartItem);
+      });
+
+      document.getElementById('cart-count').innerText = cart.length;
+      const total = cart.reduce((acc, item) => acc + parseFloat(item.price.replace('R$ ', '').replace(',', '.')), 0);
+      document.getElementById('total-price').innerText = `R$ ${total.toFixed(2)}`;
+    }
   </script>
 
   <style>
@@ -64,8 +97,8 @@
 
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-dark border-b border-gray-800 z-50 shadow-xl">
-    <div class="container mx-auto flex flex-col items-center justify-center px-6 py-4">
-      <div class="flex items-center gap-2 mb-2 animate-fadein">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <div class="flex items-center gap-2">
         <i class="fas fa-microchip text-neon text-2xl animate-pulse"></i>
         <h1 class="text-2xl font-extrabold tracking-widest neon-text">Technowbrasil</h1>
       </div>
@@ -74,114 +107,77 @@
         <a href="#noticias" class="hover:text-neon transition">Notícias</a>
         <a href="#contato" class="hover:text-neon transition">Contato</a>
       </nav>
+
+      <!-- Carrinho de Compras -->
+      <button class="relative" onclick="document.getElementById('cart').classList.toggle('hidden')">
+        <i class="fas fa-shopping-cart text-neon text-2xl"></i>
+        <span id="cart-count" class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs px-2">0</span>
+      </button>
     </div>
   </header>
 
   <!-- MAIN -->
   <main class="pt-24">
 
+    <!-- CATEGORIAS DE PRODUTOS -->
+    <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
+      <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Categorias</h2>
+      <div class="flex justify-center gap-8">
+        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white">Smartphones</button>
+        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white">Laptops</button>
+        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white">Acessórios</button>
+      </div>
+    </section>
+
     <!-- PRODUTOS -->
     <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
-      <h2 class="text-4xl text-center font-extrabold mb-10 text-neon" data-aos="fade-up">Produtos em Destaque</h2>
+      <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Produtos em Destaque</h2>
       <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        <!-- Card -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
+        <!-- Card Produto 1 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartphone TechOne 5G</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 3.299,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition" onclick="addToCart({ name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00' })">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
+        <!-- Card Produto 2 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Notebook HyperPro</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 5.899,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition" onclick="addToCart({ name: 'Notebook HyperPro', price: 'R$ 5.899,00' })">Adicionar ao Carrinho</button>
           </div>
         </div>
 
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
+        <!-- Card Produto 3 -->
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartwatch Active X</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 799,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition" onclick="addToCart({ name: 'Smartwatch Active X', price: 'R$ 799,00' })">Adicionar ao Carrinho</button>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- NOTÍCIAS -->
-    <section id="noticias" class="py-20 bg-black text-white px-6">
-      <h2 class="text-3xl text-center font-bold mb-10 text-highlight" data-aos="fade-up">Notícias Tecnológicas</h2>
-      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up">
-          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
-          <h3 class="text-xl font-semibold">Nova geração de processadores é lançada</h3>
-          <p class="text-sm mt-2 text-gray-400">Acompanhe como essa mudança impacta celulares e notebooks.</p>
-        </div>
-        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
-          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
-          <h3 class="text-xl font-semibold">Realidade aumentada nas lojas online</h3>
-          <p class="text-sm mt-2 text-gray-400">Conheça as novas experiências digitais de compra.</p>
-        </div>
-        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
-          <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
-          <h3 class="text-xl font-semibold">Como IA está transformando o atendimento</h3>
-          <p class="text-sm mt-2 text-gray-400">Chatbots inteligentes dominam o pós-venda no e-commerce.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEWSLETTER -->
-    <section class="py-16 px-6 bg-black text-white" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-4 text-highlight">Receba novidades por e-mail</h2>
-      <p class="text-center mb-6 text-gray-400">Cadastre-se e fique por dentro dos lançamentos e promoções!</p>
-      <form class="max-w-md mx-auto flex gap-2">
-        <input type="email" placeholder="Seu e-mail" required class="flex-1 p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
-        <button type="submit" class="bg-neon text-black font-bold px-5 rounded hover:bg-highlight transition">Inscrever</button>
-      </form>
-    </section>
-
-    <!-- FORMULÁRIO DE CONTATO -->
-    <section id="contato" class="py-16 px-6 bg-gray-900 text-white" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-8 text-neon">Fale com a gente</h2>
-      <form class="max-w-2xl mx-auto grid gap-6">
-        <input type="text" placeholder="Seu nome" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
-        <input type="email" placeholder="Seu e-mail" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
-        <textarea rows="5" placeholder="Sua mensagem..." class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon"></textarea>
-        <button type="submit" class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition">Enviar Mensagem</button>
-      </form>
-    </section>
-
   </main>
 
-  <!-- RODAPÉ -->
-  <footer class="bg-dark text-white py-10">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
-      <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
-      <div class="flex gap-4 mt-4 md:mt-0">
-        <a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a>
+  <!-- Carrinho (Painel lateral) -->
+  <div id="cart" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+    <div class="bg-gray-800 w-80 p-6">
+      <h3 class="text-2xl font-bold text-neon">Carrinho</h3>
+      <ul id="cart-items" class="mt-6 max-h-[300px] overflow-y-auto text-white"></ul>
+      <div class="mt-4 text-white">
+        <h4 class="font-bold">Total: <span id="total-price">R$ 0.00</span></h4>
+        <button class="bg-neon text-black font-bold py-3 w-full rounded mt-4 hover:bg-highlight transition">Finalizar Compra</button>
       </div>
+      <button class="text-white mt-6" onclick="document.getElementById('cart').classList.toggle('hidden')">Fechar</button>
     </div>
-  </footer>
-
-  <!-- BOTÃO WHATSAPP FIXO -->
-  <a href="https://wa.me/5511999999999" target="_blank"
-     class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 z-50">
-    <i class="fab fa-whatsapp fa-lg"></i>
-  </a>
-
-  <!-- JS: AOS Init -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
-  </script>
+  </div>
 
 </body>
 </html>
