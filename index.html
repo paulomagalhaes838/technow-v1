@@ -30,18 +30,42 @@
 
   <style>
     body { font-family: 'Manrope', sans-serif; }
+
+    @keyframes fadein {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-fadein {
+      animation: fadein 1s ease-out forwards;
+    }
+
+    .neon-text {
+      background: linear-gradient(to right, #3ABEFF, #A855F7, #3ABEFF);
+      background-size: 300% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: glowmove 4s linear infinite;
+    }
+
+    @keyframes glowmove {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
   </style>
 </head>
 <body class="bg-dark text-light dark:bg-black dark:text-white">
 
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-dark border-b border-gray-800 z-50 shadow-xl">
-    <div class="container mx-auto flex justify-between items-center px-6 py-4">
-      <div class="flex items-center gap-2">
-        <i class="fas fa-microchip text-neon text-2xl"></i>
-        <h1 class="text-xl font-bold tracking-widest">Technowbrasil</h1>
+    <div class="container mx-auto flex flex-col items-center justify-center px-6 py-4">
+      <div class="flex items-center gap-2 mb-2 animate-fadein">
+        <i class="fas fa-microchip text-neon text-2xl animate-pulse"></i>
+        <h1 class="text-2xl font-extrabold tracking-widest neon-text">Technowbrasil</h1>
       </div>
-      <nav class="hidden md:flex space-x-6 font-semibold text-sm">
+      <nav class="flex gap-6 font-semibold text-sm">
         <a href="#produtos" class="hover:text-neon transition">Produtos</a>
         <a href="#noticias" class="hover:text-neon transition">Notícias</a>
         <a href="#contato" class="hover:text-neon transition">Contato</a>
@@ -65,7 +89,7 @@
             <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
           </div>
         </div>
-        <!-- Repetir cards -->
+
         <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
@@ -74,6 +98,7 @@
             <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition">Comprar</button>
           </div>
         </div>
+
         <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
@@ -121,10 +146,10 @@
     </div>
   </footer>
 
-  <!-- WHATSAPP FIXO -->
+  <!-- BOTÃO WHATSAPP FIXO COM ÍCONE -->
   <a href="https://wa.me/5511999999999" target="_blank"
      class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 z-50">
-    💬
+    <i class="fab fa-whatsapp fa-lg"></i>
   </a>
 
 </body>
