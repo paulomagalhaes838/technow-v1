@@ -8,12 +8,9 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fontes e ícones -->
+  <!-- Fonte moderna -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
-
-  <!-- AOS (Animações ao rolar) -->
-  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -29,39 +26,6 @@
         }
       }
     }
-
-    // Função para gerenciar o carrinho
-    let cart = [];
-
-    function addToCart(product) {
-      cart.push(product);
-      updateCart();
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartList = document.getElementById('cart-items');
-      cartList.innerHTML = '';
-
-      cart.forEach((item, index) => {
-        const cartItem = document.createElement('li');
-        cartItem.classList.add('flex', 'justify-between', 'items-center', 'py-2', 'border-b', 'border-gray-700');
-        cartItem.innerHTML = `
-          <span>${item.name}</span>
-          <span>R$ ${item.price}</span>
-          <button class="text-red-500" onclick="removeFromCart(${index})">Remover</button>
-        `;
-        cartList.appendChild(cartItem);
-      });
-
-      document.getElementById('cart-count').innerText = cart.length;
-      const total = cart.reduce((acc, item) => acc + parseFloat(item.price.replace('R$ ', '').replace(',', '.')), 0);
-      document.getElementById('total-price').innerText = `R$ ${total.toFixed(2)}`;
-    }
   </script>
 
   <style>
@@ -71,10 +35,7 @@
       0% { opacity: 0; transform: translateY(-10px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
-    .animate-fadein {
-      animation: fadein 1s ease-out forwards;
-    }
+    .animate-fadein { animation: fadein 1s ease-out forwards; }
 
     .neon-text {
       background: linear-gradient(to right, #3ABEFF, #A855F7, #3ABEFF);
@@ -84,100 +45,150 @@
       -webkit-background-clip: text;
       animation: glowmove 4s linear infinite;
     }
-
     @keyframes glowmove {
       0% { background-position: 0% center; }
       50% { background-position: 100% center; }
       100% { background-position: 0% center; }
     }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+    }
   </style>
 </head>
-
 <body class="bg-dark text-light dark:bg-black dark:text-white">
 
   <!-- HEADER -->
   <header class="fixed top-0 w-full bg-dark border-b border-gray-800 z-50 shadow-xl">
-    <div class="container mx-auto flex justify-between items-center px-6 py-4">
-      <div class="flex items-center gap-2">
+    <div class="container mx-auto flex justify-between items-center px-6 py-3">
+      <div class="flex items-center gap-2 animate-fadein">
         <i class="fas fa-microchip text-neon text-2xl animate-pulse"></i>
         <h1 class="text-2xl font-extrabold tracking-widest neon-text">Technowbrasil</h1>
       </div>
       <nav class="flex gap-6 font-semibold text-sm">
-        <a href="#produtos" class="hover:text-neon transition">Produtos</a>
-        <a href="#noticias" class="hover:text-neon transition">Notícias</a>
-        <a href="#contato" class="hover:text-neon transition">Contato</a>
+        <a href="#produtos" class="hover:text-neon">Produtos</a>
+        <a href="#noticias" class="hover:text-neon">Notícias</a>
+        <a href="#contato" class="hover:text-neon">Contato</a>
       </nav>
-
-      <!-- Carrinho de Compras -->
-      <button class="relative" onclick="document.getElementById('cart').classList.toggle('hidden')">
+      <button onclick="toggleCart()" class="relative">
         <i class="fas fa-shopping-cart text-neon text-2xl"></i>
-        <span id="cart-count" class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs px-2">0</span>
+        <span id="cart-count" class="absolute -top-1 -right-2 bg-red-500 text-white rounded-full text-xs px-2">0</span>
       </button>
     </div>
   </header>
 
   <!-- MAIN -->
-  <main class="pt-24">
+  <main class="pt-20">
 
-    <!-- CATEGORIAS DE PRODUTOS -->
+    <!-- CATEGORIAS -->
     <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
       <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Categorias</h2>
-      <div class="flex justify-center gap-8">
-        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white">Smartphones</button>
-        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white">Laptops</button>
-        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white">Acessórios</button>
+      <div class="flex justify-center flex-wrap gap-4 max-w-xl mx-auto">
+        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Smartphones</button>
+        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Laptops</button>
+        <button class="bg-gray-800 px-6 py-3 rounded-lg text-white hover:bg-gray-700 transition">Acessórios</button>
       </div>
     </section>
 
     <!-- PRODUTOS -->
     <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
       <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Produtos em Destaque</h2>
-      <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        <!-- Card Produto 1 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <!-- SmartPhone -->
         <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
-          <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
+          <img src="https://via.placeholder.com/500x300" alt="Smartphone TechOne 5G" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartphone TechOne 5G</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 3.299,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition" onclick="addToCart({ name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00' })">Adicionar ao Carrinho</button>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition"
+              onclick="addToCart({ name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00' })">
+              Adicionar ao Carrinho
+            </button>
           </div>
         </div>
-
-        <!-- Card Produto 2 -->
+        <!-- Notebook -->
         <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
-          <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
+          <img src="https://via.placeholder.com/500x300" alt="Notebook HyperPro" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Notebook HyperPro</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 5.899,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition" onclick="addToCart({ name: 'Notebook HyperPro', price: 'R$ 5.899,00' })">Adicionar ao Carrinho</button>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition"
+              onclick="addToCart({ name: 'Notebook HyperPro', price: 'R$ 5.899,00' })">
+              Adicionar ao Carrinho
+            </button>
           </div>
         </div>
-
-        <!-- Card Produto 3 -->
+        <!-- Smartwatch -->
         <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
-          <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
+          <img src="https://via.placeholder.com/500x300" alt="Smartwatch Active X" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartwatch Active X</h3>
             <p class="text-green-400 font-bold text-lg mb-4">R$ 799,00</p>
-            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition" onclick="addToCart({ name: 'Smartwatch Active X', price: 'R$ 799,00' })">Adicionar ao Carrinho</button>
+            <button class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition"
+              onclick="addToCart({ name: 'Smartwatch Active X', price: 'R$ 799,00' })">
+              Adicionar ao Carrinho
+            </button>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- Carrinho (Painel lateral) -->
+  <!-- CARRINHO LATERAL -->
   <div id="cart" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-    <div class="bg-gray-800 w-80 p-6">
+    <div class="bg-gray-800 w-4/5 sm:w-80 p-6">
       <h3 class="text-2xl font-bold text-neon">Carrinho</h3>
-      <ul id="cart-items" class="mt-6 max-h-[300px] overflow-y-auto text-white"></ul>
+      <ul id="cart-items" class="mt-6 max-h-60 overflow-y-auto text-white space-y-2"></ul>
       <div class="mt-4 text-white">
         <h4 class="font-bold">Total: <span id="total-price">R$ 0.00</span></h4>
-        <button class="bg-neon text-black font-bold py-3 w-full rounded mt-4 hover:bg-highlight transition">Finalizar Compra</button>
+        <button class="bg-neon text-black font-bold py-3 w-full rounded mt-4 hover:bg-highlight transition">
+          Finalizar Compra
+        </button>
       </div>
-      <button class="text-white mt-6" onclick="document.getElementById('cart').classList.toggle('hidden')">Fechar</button>
+      <button class="text-white mt-6" onclick="toggleCart()">Fechar</button>
     </div>
   </div>
+
+  <!-- RODAPÉ -->
+  <footer id="contato" class="bg-dark text-white py-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+      <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FIXO -->
+  <a href="https://wa.me/5511999999999" target="_blank"
+     class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 z-50">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Gerenciamento do carrinho
+    let cart = [];
+    function addToCart(item) {
+      cart.push(item); updateCart();
+    }
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const countSpan = document.getElementById('cart-count');
+      const totalPrice = document.getElementById('total-price');
+      cartItems.innerHTML = ''; countSpan.textContent = cart.length;
+      let total = 0;
+      cart.forEach((item, idx) => {
+        cartItems.innerHTML += `<li class="flex justify-between"><span>${item.name}</span><span>${item.price}</span><button class="text-red-500 ml-2" onclick="removeItem(${idx})">Remover</button></li>`;
+        total += parseFloat(item.price.replace('R$', '').replace(',', '.'));
+      });
+      totalPrice.textContent = `R$ ${total.toFixed(2)}`;
+    }
+    function removeItem(idx) { cart.splice(idx, 1); updateCart(); }
+    function toggleCart() { document.getElementById('cart').classList.toggle('hidden'); }
+  </script>
 
 </body>
 </html>
