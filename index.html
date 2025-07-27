@@ -8,9 +8,12 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonte moderna -->
+  <!-- Fontes e ícones -->
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
+
+  <!-- AOS (Animações ao rolar) -->
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -56,6 +59,7 @@
     }
   </style>
 </head>
+
 <body class="bg-dark text-light dark:bg-black dark:text-white">
 
   <!-- HEADER -->
@@ -78,10 +82,10 @@
 
     <!-- PRODUTOS -->
     <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark">
-      <h2 class="text-4xl text-center font-extrabold mb-10 text-neon">Produtos em Destaque</h2>
+      <h2 class="text-4xl text-center font-extrabold mb-10 text-neon" data-aos="fade-up">Produtos em Destaque</h2>
       <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         <!-- Card -->
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartphone TechOne 5G</h3>
@@ -90,7 +94,7 @@
           </div>
         </div>
 
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Notebook HyperPro</h3>
@@ -99,7 +103,7 @@
           </div>
         </div>
 
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition">
+        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition" data-aos="zoom-in">
           <img src="https://via.placeholder.com/500x300" alt="Produto" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2">Smartwatch Active X</h3>
@@ -112,19 +116,19 @@
 
     <!-- NOTÍCIAS -->
     <section id="noticias" class="py-20 bg-black text-white px-6">
-      <h2 class="text-3xl text-center font-bold mb-10 text-highlight">Notícias Tecnológicas</h2>
+      <h2 class="text-3xl text-center font-bold mb-10 text-highlight" data-aos="fade-up">Notícias Tecnológicas</h2>
       <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition">
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up">
           <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
           <h3 class="text-xl font-semibold">Nova geração de processadores é lançada</h3>
           <p class="text-sm mt-2 text-gray-400">Acompanhe como essa mudança impacta celulares e notebooks.</p>
         </div>
-        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition">
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
           <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
           <h3 class="text-xl font-semibold">Realidade aumentada nas lojas online</h3>
           <p class="text-sm mt-2 text-gray-400">Conheça as novas experiências digitais de compra.</p>
         </div>
-        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition">
+        <div class="bg-gray-800 p-5 rounded-xl hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
           <img src="https://via.placeholder.com/500x250" class="rounded mb-4">
           <h3 class="text-xl font-semibold">Como IA está transformando o atendimento</h3>
           <p class="text-sm mt-2 text-gray-400">Chatbots inteligentes dominam o pós-venda no e-commerce.</p>
@@ -132,10 +136,31 @@
       </div>
     </section>
 
+    <!-- NEWSLETTER -->
+    <section class="py-16 px-6 bg-black text-white" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-4 text-highlight">Receba novidades por e-mail</h2>
+      <p class="text-center mb-6 text-gray-400">Cadastre-se e fique por dentro dos lançamentos e promoções!</p>
+      <form class="max-w-md mx-auto flex gap-2">
+        <input type="email" placeholder="Seu e-mail" required class="flex-1 p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <button type="submit" class="bg-neon text-black font-bold px-5 rounded hover:bg-highlight transition">Inscrever</button>
+      </form>
+    </section>
+
+    <!-- FORMULÁRIO DE CONTATO -->
+    <section id="contato" class="py-16 px-6 bg-gray-900 text-white" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-center mb-8 text-neon">Fale com a gente</h2>
+      <form class="max-w-2xl mx-auto grid gap-6">
+        <input type="text" placeholder="Seu nome" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <input type="email" placeholder="Seu e-mail" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <textarea rows="5" placeholder="Sua mensagem..." class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon"></textarea>
+        <button type="submit" class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition">Enviar Mensagem</button>
+      </form>
+    </section>
+
   </main>
 
   <!-- RODAPÉ -->
-  <footer id="contato" class="bg-dark text-white py-10">
+  <footer class="bg-dark text-white py-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
       <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
       <div class="flex gap-4 mt-4 md:mt-0">
@@ -146,11 +171,17 @@
     </div>
   </footer>
 
-  <!-- BOTÃO WHATSAPP FIXO COM ÍCONE -->
+  <!-- BOTÃO WHATSAPP FIXO -->
   <a href="https://wa.me/5511999999999" target="_blank"
      class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 z-50">
     <i class="fab fa-whatsapp fa-lg"></i>
   </a>
+
+  <!-- JS: AOS Init -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
 
 </body>
 </html>
