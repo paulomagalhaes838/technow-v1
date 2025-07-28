@@ -123,17 +123,20 @@
     </section>
 
     <!-- Contato -->
-    <section id="contato" class="py-16 bg-gray-900 text-white px-6" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-8 text-neon text-center">Fale com a gente</h2>
-      <form action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-2xl mx-auto grid gap-6">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://technowbrasil.com/obrigado.html">
-        <input type="text" name="nome" placeholder="Seu nome" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
-        <input type="email" name="email" placeholder="Seu e‑mail" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
-        <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon"></textarea>
-        <button type="submit" class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition-hover">Enviar Mensagem</button>
-      </form>
-    </section>
+    <section id="contato" class="py-16 px-6 bg-gray-900 text-white" data-aos="fade-up">
+  <h2 class="text-3xl font-bold text-center mb-8 text-neon">Fale com a gente</h2>
+  <form class="max-w-2xl mx-auto grid gap-6" onsubmit="redirectToThanks(event)">
+    <input type="text" placeholder="Seu nome" required
+           class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon" />
+    <input type="email" placeholder="Seu e-mail" required
+           class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon" />
+    <textarea rows="5" placeholder="Sua mensagem..." required
+           class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon"></textarea>
+    <button type="submit"
+           class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition-hover">Enviar Mensagem</button>
+  </form>
+</section>
+
 
     <!-- Feedback -->
     <section id="feedback" class="py-16 bg-gradient-to-b from-dark via-black to-dark text-white px-6" data-aos="fade-up">
@@ -178,5 +181,13 @@
     window.addEventListener('scroll',()=>{const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight - document.documentElement.clientHeight;document.getElementById('scroll-bar').style.width=((s/h)*100)+'%';});
     renderProducts();
   </script>
+  <script>
+  function redirectToThanks(e) {
+    e.preventDefault();
+    // Aqui você pode adicionar validações ou envio via API futuramente
+    window.location.href = "obrigado.html";
+  }
+</script>
+
 </body>
 </html>
