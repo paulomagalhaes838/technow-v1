@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth" data-theme="dark">
 <head>
-  <!-- Meta tags e SEO -->
+  <!-- → Metadados SEO: charset, viewport, título, descrição, palavras-chave -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Technowbrasil – Dicas, Notícias e Produtos de Tecnologia no Brasil</title>
   <meta name="description" content="Portal brasileiro de tecnologia com notícias, reviews de produtos, promoções e lançamentos de smartphones, notebooks e acessórios.">
   <meta name="keywords" content="tecnologia, smartphones, notebooks, acessórios, reviews, technowbrasil, promoções de tecnologia">
-  <!-- Open Graph para redes sociais -->
+  <!-- → Open Graph para redes sociais -->
   <meta property="og:title" content="Technowbrasil – Seu portal de tecnologia">
   <meta property="og:description" content="Notícias, reviews e os melhores produtos de tecnologia no Brasil.">
   <meta property="og:image" content="https://technowbrasil.com/imagem-preview.png">
   <meta property="og:url" content="https://technowbrasil.com">
   <meta property="og:type" content="website">
 
-  <!-- Dependências CSS/JS -->
+  <!-- → Dependências externas: Tailwind, FontAwesome, AOS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet"/>
   <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
 
-  <!-- Estilos customizados -->
+  <!-- → Estilos CSS personalizados e animações -->
   <style>
-    /* Reset básico e transição de tema */
-    body { font-family:'Manrope',sans-serif; transition: background .3s, color .3s; }
+    /* Estilo base do body e transição de tema */
+    body { font-family: 'Manrope', sans-serif; transition: background .3s, color .3s; }
     :root { --neon: #3ABEFF; --neon2: #A855F7; }
 
-    /* Animações neon-text e fadein para o cabeçalho */
-    @keyframes fadein { 0%{opacity:0;transform:translateY(-10px)} 100%{opacity:1;transform:translateY(0)} }
+    /* Animação fadein para elementos iniciais */
+    @keyframes fadein { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
     .animate-fadein { animation: fadein 1s ease-out forwards; }
-    @keyframes glowmove { 0%{background-position:0% center} 50%{background-position:100% center} 100%{background-position:0% center} }
+
+    /* Texto com efeito gradiente animado neon */
+    @keyframes glowmove { 0% { background-position: 0% center; } 50% { background-position: 100% center; } 100% { background-position: 0% center; } }
     .neon-text {
       background: linear-gradient(to right, var(--neon), var(--neon2), var(--neon));
       background-size: 300% auto;
@@ -39,26 +41,26 @@
       animation: glowmove 4s linear infinite;
     }
 
-    /* Efeitos de transição rápida */
+    /* Transição suave para hover */
     .transition-hover { transition: all .3s ease-in-out; }
 
-    /* Botões com estilo neon animado */
-    .neon-btn { /* estilo base, borda neon e pulse */
+    /* Estilo dos botões neon com pulsação constante */
+    .neon-btn {
       --btn-neon: var(--neon);
       position: relative;
       color: var(--btn-neon);
       border: 2px solid var(--btn-neon);
-      padding: .6rem 1.2rem;
       background: transparent;
+      padding: .6rem 1.2rem;
+      font-weight: 600;
+      border-radius: .375rem;
+      text-decoration: none;
       text-shadow: 0 0 6px rgba(58,190,255,0.5);
       box-shadow: 0 0 10px rgba(58,190,255,0.4);
       animation: pulse 2s infinite alternate;
       display: inline-block;
-      font-weight: 600;
-      border-radius: .375rem;
-      text-decoration: none;
     }
-    .neon-btn::before { /* efeito de preenchimento ao hover */
+    .neon-btn::before {
       content: '';
       position: absolute; inset: 0;
       background: var(--btn-neon);
@@ -76,13 +78,13 @@
     }
     .neon-btn:hover::before { opacity: 0.7; }
 
-    /* Cards com hover glow e leve elevação */
+    /* Cards com hover neon e leve elevação */
     .neon-card:hover {
       box-shadow: 0 0 20px var(--neon);
       transform: translateY(-4px) scale(1.02);
     }
 
-    /* Cabeçalho com background animado */
+    /* Cabeçalho animado com gradient em loop */
     .header-neon {
       background: linear-gradient(90deg, #0f0f1c, #121223, #0f0f1c);
       background-size: 300% 300%;
@@ -90,17 +92,17 @@
       box-shadow: 0 0 15px rgba(58,190,255,0.2);
       backdrop-filter: blur(10px);
     }
-    @keyframes gradientMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     .glow-icon:hover { filter: drop-shadow(0 0 5px var(--neon)); transform: scale(1.1); }
 
-    /* Logo com pulsação de sombra */
+    /* Logo com sombra pulsando */
     .logo-neon-shadow {
       text-shadow: 0 0 10px rgba(58,190,255,0.6);
       animation: pulseLogo 2.5s ease-in-out infinite;
     }
-    @keyframes pulseLogo { 0%,100%{ text-shadow: 0 0 10px rgba(58,190,255,0.6) } 50%{ text-shadow:0 0 20px var(--neon) } }
+    @keyframes pulseLogo { 0%,100% { text-shadow: 0 0 10px rgba(58,190,255,0.6);} 50% { text-shadow: 0 0 20px var(--neon);} }
 
-    /* Barra de scroll personalizada */
+    /* Barra de progresso de scroll personalizada */
     #scroll-bar {
       position: fixed; top: 0; left: 0;
       height: 4px; width: 0;
@@ -109,58 +111,70 @@
       transition: width .2s ease-out;
     }
 
-    /* Classe para parallax leve */
+    /* Classe para efeito parallax leve nas seções */
     .parallax {
       background-attachment: fixed;
       background-position: center;
       background-size: cover;
     }
 
-    /* Responsividade do menu */
-    #desktop-menu { display:flex; }
-    #mobile-menu { display:none; flex-direction:column; }
-    @media(max-width:768px){ #desktop-menu{display:none;} #mobile-menu{display:flex;} }
+    /* Layout responsivo de menus */
+    #desktop-menu { display: flex; }
+    #mobile-menu { display: none; flex-direction: column; }
+    @media(max-width:768px){ #desktop-menu { display: none;} #mobile-menu { display: flex;} }
   </style>
 </head>
+
 <body class="bg-dark text-light dark:bg-black dark:text-white">
 
-  <!-- Fundo animado de partículas -->
+  <!-- Fundo animado com partículas via tsParticles -->
   <div id="tsparticles" class="fixed top-0 left-0 w-full h-full -z-10"></div>
   <!-- Barra de scroll de preenchimento -->
   <div id="scroll-bar"></div>
 
-  <!-- HEADER: Logo, menu, tema e carrinho -->
+  <!-- HEADER fixo com logo, navegação e ações -->
   <header class="fixed top-0 w-full z-50 header-neon border-b border-gray-800">
-    <div class="container mx-auto ...">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-4">
+      <!-- Logo com animação de fade in -->
       <div class="flex items-center gap-2 animate-fadein">
         <i class="fas fa-microchip text-neon text-2xl animate-pulse glow-icon"></i>
         <h1 class="text-2xl font-extrabold neon-text logo-neon-shadow">Technowbrasil</h1>
       </div>
       <!-- Menu desktop -->
-      <nav id="desktop-menu" class="flex gap-6 ...">
-        <!-- links -->
+      <nav id="desktop-menu" class="flex gap-6 font-semibold text-sm mt-4 md:mt-0">
+        <a href="#categorias" class="hover:text-neon glow-icon transition-hover">Categorias</a>
+        <a href="#produtos" class="hover:text-neon glow-icon transition-hover">Produtos</a>
+        <a href="#noticias" class="hover:text-neon glow-icon transition-hover">Notícias</a>
+        <a href="#newsletter" class="hover:text-neon glow-icon transition-hover">Newsletter</a>
+        <a href="#contato" class="hover:text-neon glow-icon transition-hover">Contato</a>
+        <a href="#feedback" class="hover:text-neon glow-icon transition-hover">Feedback</a>
       </nav>
-      <!-- Botões de tema, carrinho e menu mobile -->
+      <!-- Botões: tema, carrinho e menu mobile toggle -->
       <div class="flex gap-4 mt-4 md:mt-0 items-center">
-        <button onclick="toggleTheme()" class="text-neon ..."><i class="fas fa-moon"></i></button>
+        <button onclick="toggleTheme()" class="text-neon text-xl glow-icon transition-hover"><i class="fas fa-moon"></i></button>
         <button onclick="toggleCart()" class="relative glow-icon">
           <i class="fas fa-shopping-cart text-neon text-2xl"></i>
-          <span id="cart-count" class="absolute -top-1 -right-2 bg-red-500 ...">0</span>
+          <span id="cart-count" class="absolute -top-1 -right-2 bg-red-500 text-white rounded-full text-xs px-2">0</span>
         </button>
-        <button onclick="toggleMenu()" class="md:hidden text-neon ..."><i class="fas fa-bars"></i></button>
+        <button onclick="toggleMenu()" class="md:hidden text-neon text-xl glow-icon transition-hover"><i class="fas fa-bars"></i></button>
       </div>
     </div>
-    <!-- Menu mobile -->
-    <nav id="mobile-menu" class="bg-dark px-6 pb-4 ...">
-      <!-- links -->
+    <!-- Menu mobile dropdown -->
+    <nav id="mobile-menu" class="bg-dark px-6 pb-4 font-semibold text-sm">
+      <a href="#categorias" class="hover:text-neon py-1 transition-hover">Categorias</a>
+      <a href="#produtos" class="hover:text-neon py-1 transition-hover">Produtos</a>
+      <a href="#noticias" class="hover:text-neon py-1 transition-hover">Notícias</a>
+      <a href="#newsletter" class="hover:text-neon py-1 transition-hover">Newsletter</a>
+      <a href="#contato" class="hover:text-neon py-1 transition-hover">Contato</a>
+      <a href="#feedback" class="hover:text-neon py-1 transition-hover">Feedback</a>
     </nav>
   </header>
 
   <main class="pt-24">
-    <!-- Seção Categorias -->
-    <section id="categorias" class="py-16 px-6 bg-gradient ... parallax" data-aos="fade-up">
-      <h2 class="... neon-text">Categorias</h2>
-      <div class="flex ...">
+    <!-- SEÇÃO: Categorias com botões neon -->
+    <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark parallax" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold mb-10 text-neon text-center">Categorias</h2>
+      <div class="flex justify-center flex-wrap gap-4 max-w-xl mx-auto">
         <button onclick="filterCategory('all')" class="neon-btn">Todas</button>
         <button onclick="filterCategory('smartphone')" class="neon-btn">Smartphones</button>
         <button onclick="filterCategory('laptop')" class="neon-btn">Laptops</button>
@@ -168,39 +182,88 @@
       </div>
     </section>
 
-    <!-- Seção Produtos -->
-    <section id="produtos" class="py-16 px-6 bg-gradient ... parallax" data-aos="fade-up">
-      <h2 class="... neon-text">Produtos em Destaque</h2>
-      <div id="product-grid" class="grid ...">
-        <!-- Grid preenchido por JS -->
-      </div>
+    <!-- SEÇÃO: Produtos em destaque (renderizado via JS) -->
+    <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark parallax" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold mb-10 text-neon text-center">Produtos em Destaque</h2>
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto"></div>
     </section>
 
-    <!-- Seção Notícias com cards neon -->
-    <section id="noticias" class="py-20 bg-black text-white ... parallax" data-aos="fade-up">
-      <h2 class="... text-highlight">📰 Notícias Tecnológicas</h2>
-      <div class="grid md:grid-cols-3 gap-6 ...">
-        <!-- Cada card abaixo tem efeito neon ao hover -->
-        <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform transition duration-300 neon-card" data-aos="fade-up">
-          <img src="..." alt="..." class="w-full h-48 object-cover group-hover:brightness-110 transition-transform duration-500 ease-in-out">
+    <!-- SEÇÃO: Notícias com cards neon e hover glow -->
+    <section id="noticias" class="py-20 bg-black text-white px-6 parallax" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-10 text-highlight text-center">📰 Notícias Tecnológicas</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- Card 1 -->
+        <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transition duration-300 neon-card" data-aos="fade-up">
+          <img src="https://via.placeholder.com/500x250" alt="Nova geração de processadores Intel" class="w-full h-48 object-cover group-hover:brightness-110 transition-transform duration-500 ease-in-out">
           <div class="p-5">
-            <h3 class="... text-neon group-hover:underline transition">Título</h3>
-            <p class="text-gray-400 text-sm mt-2">Resumo da notícia</p>
+            <h3 class="text-xl font-semibold text-neon group-hover:underline transition">Nova geração de processadores é lançada</h3>
+            <p class="text-gray-400 text-sm mt-2">Como isso vai impactar o mercado?</p>
             <a href="#" class="neon-btn">Ler mais →</a>
           </div>
         </div>
-        <!-- cards adicionais omitidos para brevidade -->
+        <!-- Card 2 -->
+        <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transition duration-300 neon-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="https://via.placeholder.com/500x250" alt="Realidade aumentada nas compras online" class="w-full h-48 object-cover group-hover:brightness-110 transition-transform duration-500 ease-in-out">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-neon group-hover:underline transition">Realidade aumentada nas compras online</h3>
+            <p class="text-gray-400 text-sm mt-2">Experiências inovadoras para o cliente.</p>
+            <a href="#" class="neon-btn">Ler mais →</a>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transition duration-300 neon-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="https://via.placeholder.com/500x250" alt="Chatbots para e‑commerce moderno" class="w-full h-48 object-cover group-hover:brightness-110 transition-transform duration-500 ease-in-out">
+          <div class="p-5">
+            <h3 class="text-xl font-semibold text-neon group-hover:underline transition">IA e atendimento automatizado</h3>
+            <p class="text-gray-400 text-sm mt-2">Chatbots para e‑commerce moderno.</p>
+            <a href="#" class="neon-btn">Ler mais →</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Outras seções (Newsletter, Contato, Feedback) usam estrutura semelhante -->
+    <!-- SEÇÃO: Newsletter -->
+    <section id="newsletter" class="py-16 bg-black text-white px-6 parallax" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-4 text-highlight text-center">Receba novidades por e‑mail</h2>
+      <p class="text-gray-400 mb-6 text-center">Cadastre‑se para promoções e lançamentos</p>
+      <form action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-md mx-auto flex gap-2">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://technowbrasil.com/obrigado.html">
+        <input type="email" name="subscription_email" placeholder="Seu e‑mail" required class="flex-1 p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <button type="submit" class="neon-btn">Inscrever</button>
+      </form>
+    </section>
 
+    <!-- SEÇÃO: Contato -->
+    <section id="contato" class="py-16 bg-gray-900 text-white px-6 parallax" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-8 text-neon text-center">Fale com a gente</h2>
+      <form action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-2xl mx-auto grid gap-6">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://technowbrasil.com/obrigado.html">
+        <input type="text" name="nome" placeholder="Seu nome" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <input type="email" name="email" placeholder="Seu e‑mail" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring‑neon"></textarea>
+        <button type="submit" class="neon-btn">Enviar Mensagem</button>
+      </form>
+    </section>
+
+    <!-- SEÇÃO: Feedback -->
+    <section id="feedback" class="py-16 bg-gradient-to-b from-dark via-black to-dark text-white px-6 parallax" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6 text-highlight text-center">Deixe seu Feedback</h2>
+      <form id="feedback-form" action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-2xl mx-auto grid gap-6">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://technowbrasil.com/obrigado.html">
+        <input type="text" name="assunto" placeholder="Assunto" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-highlight">
+        <textarea name="mensagem" rows="4" placeholder="Escreva seu feedback..." required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-highlight"></textarea>
+        <button type="submit" class="neon-btn">Enviar Feedback</button>
+      </form>
+    </section>
   </main>
 
-  <!-- Modais e carrinho -->
+  <!-- MODAIS: Feedback e Carrinho -->
   <div id="feedback-modal-bg">
-    <div id="feedback-modal">
-      <h3 class="... neon-text">Obrigado!</h3>
+    <div id="feedback-modal" class="bg-gray-900 rounded-lg p-6 mx-auto text-center max-w-sm">
+      <h3 class="text-xl font-bold neon-text">Obrigado!</h3>
       <p>Seu feedback foi enviado com sucesso.</p>
       <button onclick="closeModal()" class="neon-btn">Fechar</button>
     </div>
@@ -208,132 +271,162 @@
 
   <div id="cart">
     <div id="cart-overlay" onclick="toggleCart()"></div>
-    <div id="cart-panel">
-      <h3 class="... text-neon">Carrinho</h3>
-      <ul id="cart-items" class="..."></ul>
+    <div id="cart-panel" class="bg-gray-900 p-6 h-full flex flex-col max-w-xs">
+      <h3 class="text-2xl font-bold text-neon">Carrinho</h3>
+      <ul id="cart-items" class="mt-6 max-h-60 overflow-y-auto text-white space-y-2 flex-1"></ul>
       <div class="mt-4 text-white">
-        <h4>Total: <span id="total-price">R$ 0.00</span></h4>
+        <h4 class="font-bold">Total: <span id="total-price">R$ 0.00</span></h4>
         <button class="neon-btn w-full mt-4">Finalizar Compra</button>
       </div>
       <button class="text-white mt-6" onclick="toggleCart()">Fechar</button>
     </div>
   </div>
 
-  <!-- Footer e WhatsApp flutuante -->
-  <footer class="bg-dark text-white py-10"> ... </footer>
-  <a href="https://wa.me/..." class="fixed bottom-6 left-6 ..."><i class="fab fa-whatsapp"></i></a>
+  <!-- FOOTER & Botão flutuante de WhatsApp -->
+  <footer class="bg-dark text-white py-10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+      <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
 
-  <!-- Scripts JS -->
+  <a href="https://wa.me/5511999999999" target="_blank"
+     class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 transition-hover z-50">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Dependências JS: AOS e tsParticles -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-  <script>
-    // Inicia animações AOS (scroll fade-in)
-    AOS.init({ duration:800, once:true });
 
-    // Configura background de partículas com tsParticles
+  <!-- SCRIPTS: inicialização e funções principais -->
+  <script>
+    // → Inicializa animações AOS (fade ao scroll)
+    AOS.init({ duration: 800, once: true });
+
+    // → Inicia partículas de fundo com tsParticles
     tsParticles.load("tsparticles", {
-      background: { color:{ value: "#0F0F1C" } },
-      fullScreen: { enable:false },
-      particles: { /* cor, movimento, número, links */ detectRetina: true }
+      background: { color: { value: "#0F0F1C" } },
+      fullScreen: { enable: false },
+      particles: {
+        color: { value: ["#3ABEFF", "#A855F7"] },
+        move: { enable: true, speed: 0.5 },
+        number: { value: 60, density: { enable: true, area: 800 } },
+        opacity: { value: 0.3 },
+        size: { value: { min: 1, max: 3 } },
+        links: { enable: true, distance: 120, color: "#3ABEFF", opacity: 0.3 }
+      },
+      detectRetina: true
     });
 
+    // → Dados estáticos dos produtos
     const products = [
-      {id:1,name:'Smartphone TechOne 5G',price:'R$ 3.299,00',category:'smartphone',image:'https://via.placeholder.com/500x300'},
-      /* outros produtos */
+      { id: 1, name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00', category: 'smartphone', image: 'https://via.placeholder.com/500x300' },
+      { id: 2, name: 'Notebook HyperPro', price: 'R$ 5.899,00', category: 'laptop', image: 'https://via.placeholder.com/500x300' },
+      { id: 3, name: 'Smartwatch Active X', price: 'R$ 799,00', category: 'acessorio', image: 'https://via.placeholder.com/500x300' }
     ];
 
     let cart = [];
 
-    /** Renderiza produtos filtrados por categoria **/
-    function renderProducts(f='all') {
+    /** Renderiza produtos no grid conforme categoria */
+    function renderProducts(filter = 'all') {
       const grid = document.getElementById('product-grid');
       grid.innerHTML = '';
-      products.filter(p => f==='all' || p.category===f).forEach(p => {
+      products.filter(p => filter === 'all' || p.category === filter).forEach(p => {
         const card = document.createElement('div');
         card.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg transition duration-300 neon-card';
-        card.setAttribute('data-aos','zoom-in');
+        card.setAttribute('data-aos', 'zoom-in');
         card.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover group-hover:brightness-110 transition-transform duration-500 ease-in-out">
+          <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover transition-transform duration-500 ease-in-out group-hover:brightness-110">
           <div class="p-6">
             <h3 class="text-xl font-semibold mb-2 text-neon">${p.name}</h3>
             <p class="text-green-400 font-bold text-lg mb-4">${p.price}</p>
-            <button onclick="addToCart({name:'${p.name}',price:'${p.price}'})" class="neon-btn">Adicionar ao Carrinho</button>
+            <button onclick="addToCart({ name: '${p.name}', price: '${p.price}' })" class="neon-btn">Adicionar ao Carrinho</button>
           </div>`;
         grid.appendChild(card);
       });
     }
 
+    /** Filtra produtos por categoria */
     function filterCategory(category) {
       renderProducts(category);
     }
 
-    /** Adiciona item ao carrinho */
+    /** Adiciona item selecionado ao carrinho */
     function addToCart(item) {
       cart.push(item);
       updateCart();
     }
 
-    /** Atualiza contador e valor total no carrinho */
+    /** Atualiza contador do carrinho e total de preço */
     function updateCart() {
       document.getElementById('cart-count').textContent = cart.length;
       const list = document.getElementById('cart-items');
       list.innerHTML = '';
       let total = 0;
-      cart.forEach((it, idx) => {
-        total += parseFloat(it.price.replace('R$ ','').replace(',','.'));
-        list.innerHTML += `<li class="flex justify-between"><span>${it.name}</span><span>${it.price}</span><button class="text-red-500 ml-2" onclick="removeItem(${idx})">Remover</button></li>`;
+      cart.forEach((item, idx) => {
+        total += parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
+        list.innerHTML += `
+          <li class="flex justify-between">
+            <span>${item.name}</span><span>${item.price}</span>
+            <button class="text-red-500 ml-2" onclick="removeItem(${idx})">Remover</button>
+          </li>`;
       });
       document.getElementById('total-price').textContent = `R$ ${total.toFixed(2)}`;
     }
 
-    /** Remove item do carrinho */
+    /** Remove item específico do carrinho */
     function removeItem(index) {
-      cart.splice(index,1);
+      cart.splice(index, 1);
       updateCart();
     }
 
-    /** Mostra ou esconde o painel do carrinho */
+    /** Alterna a visibilidade do painel do carrinho */
     function toggleCart() {
       document.getElementById('cart').classList.toggle('show');
     }
 
-    /** Alterna tema claro/escuro */
+    /** Alterna entre tema claro e escuro */
     function toggleTheme() {
       const root = document.documentElement;
       const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', newTheme);
-      document.body.classList.toggle('dark', newTheme==='dark');
+      document.body.classList.toggle('dark', newTheme === 'dark');
       localStorage.setItem('theme', newTheme);
     }
 
-    /** Inicializa tema guardado ou preferido pelo sistema */
-    (function(){
+    /** Inicializa tema baseado no armazenamento local ou preferências do sistema */
+    (function initializeTheme() {
       const saved = localStorage.getItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const theme = saved || (prefersDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
-      document.body.classList.toggle('dark', theme==='dark');
+      document.body.classList.toggle('dark', theme === 'dark');
     })();
 
-    /** Alterna menu mobile aberto/fechado */
+    /** Alterna menu mobile entre aberto e fechado */
     function toggleMenu() {
-      const m = document.getElementById('mobile-menu');
-      m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+      const menu = document.getElementById('mobile-menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
 
-    /** Fecha modal de feedback */
+    /** Fecha modal de feedback quando clicado botão */
     function closeModal() {
       document.getElementById('feedback-modal-bg').style.display = 'none';
     }
 
-    /** Atualiza barra de progresso conforme scroll */
+    /** Atualiza barra de progresso com base no scroll da página */
     window.addEventListener('scroll', () => {
       const scroll = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      document.getElementById('scroll-bar').style.width = `${(scroll / height)*100}%`;
+      document.getElementById('scroll-bar').style.width = `${(scroll / height) * 100}%`;
     });
 
-    // Renderiza produtos ao carregar
+    // Renderiza os produtos ao carregar a página
     renderProducts();
   </script>
 </body>
