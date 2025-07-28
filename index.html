@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth" data-theme="dark">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Technowbrasil – Seu Portal de Tecnologia</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet"/>
@@ -32,8 +33,6 @@
     #cart-overlay{ position:absolute; inset:0; background:rgba(0,0,0,0.7); opacity:0; transition:opacity .3s ease-out; }
     #cart-panel{ position:absolute; right:0; top:0; width:100%; max-width:20rem; height:100%; background:#2d2d2d; transform: translateX(100%); transition: transform .3s ease-in-out; }
     #cart.show #cart-overlay{ opacity:1; } #cart.show #cart-panel{ transform: translateX(0); }
-    #feedback-msg{ position:fixed; top:20px; right:20px; padding:15px 20px; background:#3ABEFF; color:#fff; border-radius:5px; box-shadow:0 2px 10px rgba(0,0,0,0.5); opacity:0; pointer-events:none; transition:opacity .5s; }
-    #feedback-msg.show{ opacity:1; }
     #feedback-modal-bg{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:none; justify-content:center; align-items:center; z-index:50; }
     #feedback-modal{ background:#1e1e28; padding:2rem; border-radius:8px; max-width:24rem; width:90%; color:white; text-align:center; }
     #feedback-modal button{ margin-top:1rem; }
@@ -42,6 +41,7 @@
 <body class="bg-dark text-light dark:bg-black dark:text-white">
   <div id="scroll-bar"></div>
 
+  <!-- HEADER -->
   <header class="fixed top-0 w-full z-50 header-neon border-b border-gray-800">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-4">
       <div class="flex items-center gap-2 animate-fadein">
@@ -58,10 +58,7 @@
       </nav>
       <div class="flex gap-4 mt-4 md:mt-0 items-center">
         <button onclick="toggleTheme()" class="text-neon text-xl glow-icon transition-hover"><i class="fas fa-moon"></i></button>
-        <button onclick="toggleCart()" class="relative glow-icon">
-          <i class="fas fa-shopping-cart text-neon text-2xl"></i>
-          <span id="cart-count" class="absolute -top-1 -right-2 bg-red-500 text-white rounded-full text-xs px-2">0</span>
-        </button>
+        <button onclick="toggleCart()" class="relative glow-icon"><i class="fas fa-shopping-cart text-neon text-2xl"></i><span id="cart-count" class="absolute -top-1 -right-2 bg-red-500 text-white rounded-full text-xs px-2">0</span></button>
         <button onclick="toggleMenu()" class="md:hidden text-neon text-xl glow-icon transition-hover"><i class="fas fa-bars"></i></button>
       </div>
     </div>
@@ -76,6 +73,7 @@
   </header>
 
   <main class="pt-24">
+    <!-- Categorias -->
     <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark" data-aos="fade-up">
       <h2 class="text-4xl font-extrabold mb-10 text-neon text-center">Categorias</h2>
       <div class="flex justify-center flex-wrap gap-4 max-w-xl mx-auto">
@@ -86,70 +84,63 @@
       </div>
     </section>
 
+    <!-- Produtos -->
     <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark" data-aos="fade-up">
       <h2 class="text-4xl font-extrabold mb-10 text-neon text-center">Produtos em Destaque</h2>
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto"></div>
     </section>
 
+    <!-- Notícias -->
     <section id="noticias" class="py-20 bg-black text-white px-6" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-10 text-highlight text-center">📰 Notícias Tecnológicas</h2>
       <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- cards replicados conforme notebook earlier -->
         <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition duration-300" data-aos="fade-up">
-          <div class="overflow-hidden">
-            <img src="https://via.placeholder.com/500x250" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" alt="Notícia 1">
-          </div>
-          <div class="p-5">
-            <h3 class="text-xl font-semibold text-neon group-hover:underline transition">Nova geração de processadores é lançada</h3>
-            <p class="text-gray-400 text-sm mt-2">Como isso vai impactar o mercado?</p>
-            <button class="mt-4 text-highlight font-bold hover:underline transition-hover">Ler mais →</button>
-          </div>
+          <div class="overflow-hidden"><img src="https://via.placeholder.com/500x250" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" alt="Notícia 1"></div>
+          <div class="p-5"><h3 class="text-xl font-semibold text-neon group-hover:underline transition">Nova geração de processadores é lançada</h3><p class="text-gray-400 text-sm mt-2">Como isso vai impactar o mercado?</p><button class="mt-4 text-highlight font-bold hover:underline transition-hover">Ler mais →</button></div>
         </div>
         <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition duration-300" data-aos="fade-up" data-aos-delay="100">
-          <div class="overflow-hidden">
-            <img src="https://via.placeholder.com/500x250" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" alt="Notícia 2">
-          </div>
-          <div class="p-5">
-            <h3 class="text-xl font-semibold text-neon group-hover:underline transition">Realidade aumentada nas compras online</h3>
-            <p class="text-gray-400 text-sm mt-2">Experiências inovadoras para o cliente.</p>
-            <button class="mt-4 text-highlight font-bold hover:underline transition-hover">Ler mais →</button>
-          </div>
+          <div class="overflow-hidden"><img src="https://via.placeholder.com/500x250" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" alt="Notícia 2"></div>
+          <div class="p-5"><h3 class="text-xl font-semibold text-neon group-hover:underline transition">Realidade aumentada nas compras online</h3><p class="text-gray-400 text-sm mt-2">Experiências inovadoras para o cliente.</p><button class="mt-4 text-highlight font-bold hover:underline transition-hover">Ler mais →</button></div>
         </div>
         <div class="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:scale-[1.02] transition duration-300" data-aos="fade-up" data-aos-delay="200">
-          <div class="overflow-hidden">
-            <img src="https://via.placeholder.com/500x250" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" alt="Notícia 3">
-          </div>
-          <div class="p-5">
-            <h3 class="text-xl font-semibold text-neon group-hover:underline transition">IA e atendimento automatizado</h3>
-            <p class="text-gray-400 text-sm mt-2">Chatbots para e‑commerce moderno.</p>
-            <button class="mt-4 text-highlight font-bold hover:underline transition-hover">Ler mais →</button>
-          </div>
+          <div class="overflow-hidden"><img src="https://via.placeholder.com/500x250" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:brightness-110" alt="Notícia 3"></div>
+          <div class="p-5"><h3 class="text-xl font-semibold text-neon group-hover:underline transition">IA e atendimento automatizado</h3><p class="text-gray-400 text-sm mt-2">Chatbots para e‑commerce moderno.</p><button class="mt-4 text-highlight font-bold hover:underline transition-hover">Ler mais →</button></div>
         </div>
       </div>
     </section>
 
+    <!-- Newsletter -->
     <section id="newsletter" class="py-16 bg-black text-white px-6" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-4 text-highlight text-center">Receba novidades por e-mail</h2>
+      <h2 class="text-3xl font-bold mb-4 text-highlight text-center">Receba novidades por e‑mail</h2>
       <p class="text-gray-400 mb-6 text-center">Cadastre‑se para promoções e lançamentos</p>
-      <form class="max-w-md mx-auto flex gap-2">
-        <input type="email" placeholder="Seu e‑mail" required class="flex-1 p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+      <form action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-md mx-auto flex gap-2">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://technowbrasil.com/obrigado.html">
+        <input type="email" name="subscription_email" placeholder="Seu e‑mail" required class="flex-1 p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
         <button type="submit" class="bg-neon text-black font-bold px-5 rounded hover:bg-highlight transition-hover">Inscrever</button>
       </form>
     </section>
 
+    <!-- Contato -->
     <section id="contato" class="py-16 bg-gray-900 text-white px-6" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-8 text-neon text-center">Fale com a gente</h2>
-      <form class="max-w-2xl mx-auto grid gap-6">
-        <input type="text" placeholder="Seu nome" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:ring-2 focus:ring-neon focus:outline-none">
-        <input type="email" placeholder="Seu e‑mail" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:ring-2 focus:ring-neon focus:outline-none">
-        <textarea rows="5" placeholder="Sua mensagem..." required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:ring-2 focus:ring-neon focus:outline-none"></textarea>
+      <form action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-2xl mx-auto grid gap-6">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://technowbrasil.com/obrigado.html">
+        <input type="text" name="nome" placeholder="Seu nome" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <input type="email" name="email" placeholder="Seu e‑mail" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon">
+        <textarea name="mensagem" rows="5" placeholder="Sua mensagem..." required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon"></textarea>
         <button type="submit" class="bg-neon text-black font-bold py-3 rounded hover:bg-highlight transition-hover">Enviar Mensagem</button>
       </form>
     </section>
 
+    <!-- Feedback -->
     <section id="feedback" class="py-16 bg-gradient-to-b from-dark via-black to-dark text-white px-6" data-aos="fade-up">
       <h2 class="text-3xl font-bold mb-6 text-highlight text-center">Deixe seu Feedback</h2>
-      <p class="text-gray-400 mb-6 text-center">Ajude-nos a melhorar! 😊</p>
-      <form id="feedback-form" class="max-w-2xl mx-auto grid gap-6">
+      <form id="feedback-form" action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-2xl mx-auto grid gap-6">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://technowbrasil.com/obrigado.html">
         <input type="text" name="assunto" placeholder="Assunto" required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-highlight">
         <textarea name="mensagem" rows="4" placeholder="Escreva seu feedback..." required class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-highlight"></textarea>
         <button type="submit" class="bg-highlight text-black font-bold py-3 rounded hover:bg-neon transition-hover">Enviar Feedback</button>
@@ -157,32 +148,15 @@
     </section>
   </main>
 
-  <div id="feedback-msg">Obrigado pelo feedback! 🙌</div>
+  <!-- Modals e carrinho conforme antes -->
   <div id="feedback-modal-bg"><div id="feedback-modal"><h3 class="text-xl font-bold neon-text">Obrigado!</h3><p>Seu feedback foi enviado com sucesso.</p><button onclick="closeModal()" class="bg-neon text-black px-4 py-2 rounded hover:bg-highlight transition-hover">Fechar</button></div></div>
 
-  <div id="cart">
-    <div id="cart-overlay" onclick="toggleCart()"></div>
-    <div id="cart-panel">
-      <div class="p-6 h-full flex flex-col">
-        <h3 class="text-2xl font-bold text-neon">Carrinho</h3>
-        <ul id="cart-items" class="mt-6 max-h-60 overflow-y-auto text-white space-y-2 flex-1"></ul>
-        <div class="mt-4 text-white">
-          <h4 class="font-bold">Total: <span id="total-price">R$ 0.00</span></h4>
-          <button class="bg-neon text-black font-bold py-3 w-full rounded mt-4 hover:bg-highlight transition-hover">Finalizar Compra</button>
-        </div>
-        <button class="text-white mt-6" onclick="toggleCart()">Fechar</button>
-      </div>
-    </div>
-  </div>
+  <div id="cart"><div id="cart-overlay" onclick="toggleCart()"></div><div id="cart-panel"><div class="p-6 h-full flex flex-col"><h3 class="text-2xl font-bold text-neon">Carrinho</h3><ul id="cart-items" class="mt-6 max-h-60 overflow-y-auto text-white space-y-2 flex-1"></ul><div class="mt-4 text-white"><h4 class="font-bold">Total: <span id="total-price">R$ 0.00</span></h4><button class="bg-neon text-black font-bold py-3 w-full rounded mt-4 hover:bg-highlight transition-hover">Finalizar Compra</button></div><button class="text-white mt-6" onclick="toggleCart()">Fechar</button></div></div></div>
 
   <footer class="bg-dark text-white py-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
       <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
-      <div class="flex gap-4 mt-4 md:mt-0">
-        <a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a>
-      </div>
+      <div class="flex gap-4 mt-4 md:mt-0"><a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a><a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a></div>
     </div>
   </footer>
 
@@ -192,85 +166,16 @@
   <script>
     AOS.init({ duration:800, once:true });
 
-    const products = [
-      { id:1, name:'Smartphone TechOne 5G', price:'R$ 3.299,00', category:'smartphone', image:'https://via.placeholder.com/500x300' },
-      { id:2, name:'Notebook HyperPro', price:'R$ 5.899,00', category:'laptop', image:'https://via.placeholder.com/500x300' },
-      { id:3, name:'Smartwatch Active X', price:'R$ 799,00', category:'acessorio', image:'https://via.placeholder.com/500x300' }
-    ];
-    let cart = [];
-    function renderProducts(filter='all'){
-      const grid = document.getElementById('product-grid');
-      grid.innerHTML = '';
-      products.filter(p => filter==='all' || p.category===filter).forEach(p=>{
-        const div = document.createElement('div');
-        div.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition-hover';
-        div.setAttribute('data-aos','zoom-in');
-        div.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover" loading="lazy">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">${p.name}</h3>
-            <p class="text-green-400 font-bold text-lg mb-4">${p.price}</p>
-            <button onclick="addToCart({name:'${p.name}',price:'${p.price}'})" class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition-hover">Adicionar ao Carrinho</button>
-          </div>`;
-        grid.appendChild(div);
-      });
-    }
-    function filterCategory(c){ renderProducts(c); }
-    function addToCart(item){ cart.push(item); updateCart(); }
-    function updateCart(){
-      document.getElementById('cart-count').textContent = cart.length;
-      const list = document.getElementById('cart-items');
-      list.innerHTML = '';
-      let total = 0;
-      cart.forEach((i,j)=>{
-        total += parseFloat(i.price.replace('R$ ','').replace(',','.'));
-        list.innerHTML += `<li class="flex justify-between"><span>${i.name}</span><span>${i.price}</span><button class="text-red-500 ml-2" onclick="removeItem(${j})">Remover</button></li>`;
-      });
-      document.getElementById('total-price').textContent = `R$ ${total.toFixed(2)}`;
-    }
-    function removeItem(i){ cart.splice(i,1); updateCart(); }
-    function toggleCart(){ document.getElementById('cart').classList.toggle('show'); }
+    // Produtos, carrinho, tema, menu e modais continuam igual ao código anterior
+    const products=[{id:1,name:'Smartphone TechOne 5G',price:'R$ 3.299,00',category:'smartphone',image:'https://via.placeholder.com/500x300'},{id:2,name:'Notebook HyperPro',price:'R$ 5.899,00',category:'laptop',image:'https://via.placeholder.com/500x300'},{id:3,name:'Smartwatch Active X',price:'R$ 799,00',category:'acessorio',image:'https://via.placeholder.com/500x300'}];
+    let cart=[]; function renderProducts(f='all'){const g=document.getElementById('product-grid');g.innerHTML='';products.filter(p=>f==='all'||p.category===f).forEach(p=>{const d=document.createElement('div');d.className='bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-[1.02] transition-hover';d.setAttribute('data-aos','zoom-in');d.innerHTML=`<img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover" loading="lazy"><div class="p-6"><h3 class="text-xl font-semibold mb-2">${p.name}</h3><p class="text-green-400 font-bold text-lg mb-4">${p.price}</p><button onclick="addToCart({name:'${p.name}',price:'${p.price}'})" class="bg-neon text-black px-5 py-2 rounded hover:bg-highlight transition-hover">Adicionar ao Carrinho</button></div>`;g.appendChild(d);});}
+    function filterCategory(c){renderProducts(c);} function addToCart(i){cart.push(i);updateCart();} function updateCart(){document.getElementById('cart-count').textContent=cart.length;const l=document.getElementById('cart-items');l.innerHTML='';let t=0;cart.forEach((it,idx)=>{t+=parseFloat(it.price.replace('R$ ','').replace(',','.'));l.innerHTML+=`<li class="flex justify-between"><span>${it.name}</span><span>${it.price}</span><button class="text-red-500 ml-2" onclick="removeItem(${idx})">Remover</button></li>`;});document.getElementById('total-price').textContent=`R$ ${t.toFixed(2)}`;} function removeItem(i){cart.splice(i,1);updateCart();} function toggleCart(){document.getElementById('cart').classList.toggle('show');}
 
-    function toggleTheme(){
-      const r = document.documentElement;
-      const c = r.getAttribute('data-theme') === 'dark' ? 'light':'dark';
-      r.setAttribute('data-theme', c);
-      document.body.classList.toggle('dark', c==='dark');
-      localStorage.setItem('theme', c);
-    }
-    (function(){
-      const s = localStorage.getItem('theme');
-      const p = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const t = s || (p?'dark':'light');
-      document.documentElement.setAttribute('data-theme', t);
-      document.body.classList.toggle('dark', t==='dark');
-    })();
+    function toggleTheme(){const r=document.documentElement;const c=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',c);document.body.classList.toggle('dark',c==='dark');localStorage.setItem('theme',c);}(()=>{const s=localStorage.getItem('theme');const p=window.matchMedia('(prefers-color-scheme: dark)').matches;const t=s||(p?'dark':'light');document.documentElement.setAttribute('data-theme',t);document.body.classList.toggle('dark',t==='dark');})();
 
-    function toggleMenu(){
-      const m = document.getElementById('mobile-menu');
-      m.style.display = m.style.display==='flex'?'none':'flex';
-    }
-
-    document.getElementById('feedback-form').addEventListener('submit', function(e){
-      e.preventDefault();
-      const assunto = this.assunto.value;
-      const msg = this.mensagem.value;
-      const arr = JSON.parse(localStorage.getItem('feedbacks')||'[]');
-      arr.push({assunto, mensagem: msg, data: new Date().toISOString()});
-      localStorage.setItem('feedbacks', JSON.stringify(arr));
-      this.reset();
-      openModal();
-    });
-
-    function openModal(){ document.getElementById('feedback-modal-bg').style.display = 'flex'; }
-    function closeModal(){ document.getElementById('feedback-modal-bg').style.display = 'none'; }
-
-    window.addEventListener('scroll', ()=>{
-      const s = document.documentElement.scrollTop;
-      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      document.getElementById('scroll-bar').style.width = ((s/h)*100) + '%';
-    });
-
+    function toggleMenu(){const m=document.getElementById('mobile-menu');m.style.display=m.style.display==='flex'?'none':'flex';}
+    function closeModal(){document.getElementById('feedback-modal-bg').style.display='none';}
+    window.addEventListener('scroll',()=>{const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight - document.documentElement.clientHeight;document.getElementById('scroll-bar').style.width=((s/h)*100)+'%';});
     renderProducts();
   </script>
 </body>
