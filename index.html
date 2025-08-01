@@ -1,39 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth" data-theme="dark">
+<html lang="pt-BR">
 <head>
-  <!-- Metadados SEO -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Technowbrasil – Dicas, Notícias e Produtos de Tecnologia no Brasil</title>
-  <meta name="description" content="Portal brasileiro de tecnologia com notícias, reviews de produtos, promoções e lançamentos de smartphones, notebooks e acessórios.">
-  <meta name="keywords" content="tecnologia, smartphones, notebooks, acessórios, reviews, technowbrasil, promoções de tecnologia">
-  <meta property="og:title" content="Technowbrasil – Seu portal de tecnologia">
-  <meta property="og:description" content="Notícias, reviews e os melhores produtos de tecnologia no Brasil.">
-  <meta property="og:image" content="https://technowbrasil.com/imagem-preview.png">
-  <meta property="og:url" content="https://technowbrasil.com">
-  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technow | Sua loja tech</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Technow</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Produtos</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet"/>
-  <script src="https://kit.fontawesome.com/a2e0bf7412.js" crossorigin="anonymous"></script>
-  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
+  <section class="hero">
+    <div class="container">
+      <h2>Upgrade sua vida com tecnologia de ponta</h2>
+      <p>Notebooks, celulares, peças e muito mais</p>
+      <a href="#" class="btn">Ver produtos</a>
+    </div>
+  </section>
 
-  <style>
-    /* ==== Estilos Originais ==== */
-    body { font-family: 'Manrope', sans-serif; transition: background .3s, color .3s; }
-    :root { --neon: #3ABEFF; --neon2: #A855F7; }
-    /* (adicione aqui todo o CSS personalizado que você já tinha, incluindo animações, neon-text, .header-neon, .neon-btn, etc.) */
+  <section class="categorias">
+    <div class="container">
+      <h3>Categorias</h3>
+      <div class="grid">
+        <div class="categoria">Celulares</div>
+        <div class="categoria">Notebooks</div>
+        <div class="categoria">Computadores</div>
+        <div class="categoria">Upgrades</div>
+      </div>
+    </div>
+  </section>
 
-    /* ==== Melhoria Carrinho: Sidebar Slide-in ==== */
-    #cart {
-      position: fixed; top: 0; right: 0;
-      height: 100vh; width: 100%;
-      z-index: 9999; pointer-events: none;
-    }
-    #cart-overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.5);
-      opacity: 0; transition: opacity 0.3s ease;
+  <section class="produtos">
+    <div class="container">
+      <h3>Produtos em Destaque</h3>
+      <div class="grid">
+        <div class="produto">
+          <img src="https://via.placeholder.com/200" alt="Produto" />
+          <h4>Notebook Gamer X</h4>
+          <p>R$ 4.999,00</p>
+          <a href="https://wa.me/SEUNUMERO" class="btn">Comprar via WhatsApp</a>
+        </div>
+        <div class="produto">
+          <img src="https://via.placeholder.com/200" alt="Produto" />
+          <h4>Smartphone Pro 12</h4>
+          <p>R$ 2.799,00</p>
+          <a href="https://wa.me/SEUNUMERO" class="btn">Comprar via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Technow. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
       pointer-events: none;
     }
     #cart-panel {
