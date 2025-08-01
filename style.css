@@ -10,6 +10,11 @@ body {
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .container {
   width: 90%;
   max-width: 1200px;
@@ -18,67 +23,99 @@ body {
 
 header {
   background: #1a1a1a;
-  padding: 20px 0;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 28px;
   color: #00ffcc;
+  font-weight: bold;
 }
 
-nav ul {
-  display: flex;
-  gap: 20px;
+.menu {
   list-style: none;
-  justify-content: flex-end;
+  display: flex;
+  gap: 25px;
 }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
+.menu a:hover {
+  color: #00ffcc;
 }
 
 .hero {
   background: linear-gradient(135deg, #00ffcc, #0066ff);
-  padding: 60px 0;
-  text-align: center;
   color: #000;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
 }
 
 .hero .btn {
-  background: #000;
-  color: #00ffcc;
-  padding: 12px 20px;
   margin-top: 20px;
   display: inline-block;
-  text-decoration: none;
+  padding: 12px 24px;
+  background: #000;
+  color: #00ffcc;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.hero .btn:hover {
+  background: #111;
 }
 
 .categorias {
-  padding: 40px 0;
+  padding: 60px 0;
   text-align: center;
 }
 
 .categorias .grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .categoria {
   background: #1f1f1f;
   padding: 20px;
   border: 1px solid #00ffcc;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 150px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.categoria:hover {
+  transform: scale(1.05);
+}
+
+.categoria img {
+  width: 40px;
+  margin-bottom: 10px;
 }
 
 .produtos {
-  padding: 40px 0;
+  padding: 60px 0;
   text-align: center;
 }
 
@@ -87,39 +124,85 @@ nav a {
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .produto {
   background: #1f1f1f;
   padding: 20px;
-  border-radius: 8px;
-  width: 220px;
+  border-radius: 10px;
+  width: 250px;
+  transition: transform 0.3s;
+}
+
+.produto:hover {
+  transform: scale(1.03);
 }
 
 .produto img {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 6px;
+  margin-bottom: 15px;
 }
 
 .produto h4 {
-  margin: 15px 0 5px;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.produto p {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .produto .btn {
   display: block;
-  margin-top: 10px;
   padding: 10px;
   background: #00ffcc;
   color: #000;
-  text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
 }
 
 footer {
   background: #1a1a1a;
-  padding: 20px 0;
+  padding: 40px 0 20px;
+  margin-top: 60px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+footer h4 {
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+
+footer p {
+  color: #ccc;
+  font-size: 14px;
+}
+
+footer .copyright {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #666;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  font-size: 24px;
+  padding: 14px 16px;
+  border-radius: 50%;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
