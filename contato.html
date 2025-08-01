@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato | Technow</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Botão WhatsApp -->
+  <a href="https://wa.me/55SEUNUMERO" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">💬</a>
+
+  <header>
+    <div class="container header-content">
+      <h1 class="logo">Technow</h1>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Produtos</a></li>
+          <li><a href="#">Categorias</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="contato">
+    <div class="container">
+      <h2>Entre em Contato</h2>
+      <p>Ficou com dúvidas ou quer fazer um orçamento? Envie sua mensagem pra gente!</p>
+
+      <div class="contato-grid">
+        <form action="mailto:contato@technow.com" method="POST" enctype="text/plain">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required />
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="mensagem">Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+          <button type="submit" class="btn">Enviar</button>
+        </form>
+
+        <div class="info-contato">
+          <h3>Informações</h3>
+          <p><strong>WhatsApp:</strong> (11) 994545207</p>
+          <p><strong>Email:</strong> paulosergioti511@gmail.com</p>
+          <p><strong>Endereço:</strong> Rua da Tecnologia, 123 - Tech City</p>
+          <p><strong>Atendimento:</strong> Segunda a sexta, 9h às 18h</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Technow</h4>
+          <p>Soluções tecnológicas com qualidade e confiança.</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p>WhatsApp: (11) 994545207</p>
+          <p>Email: paulosergioti511@gmail.com</p>
+        </div>
+        <div>
+          <h4>Redes Sociais</h4>
+          <p>@technow_oficial</p>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Technow. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
