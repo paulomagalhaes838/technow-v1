@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+header {
+  background: #1a1a1a;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 24px;
+  color: #00ffcc;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  justify-content: flex-end;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.hero {
+  background: linear-gradient(135deg, #00ffcc, #0066ff);
+  padding: 60px 0;
+  text-align: center;
+  color: #000;
+}
+
+.hero .btn {
+  background: #000;
+  color: #00ffcc;
+  padding: 12px 20px;
+  margin-top: 20px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.categorias {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.categorias .grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.categoria {
+  background: #1f1f1f;
+  padding: 20px;
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  width: 150px;
+}
+
+.produtos {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.produtos .grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.produto {
+  background: #1f1f1f;
+  padding: 20px;
+  border-radius: 8px;
+  width: 220px;
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.produto h4 {
+  margin: 15px 0 5px;
+}
+
+.produto .btn {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background: #00ffcc;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+footer {
+  background: #1a1a1a;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+}
