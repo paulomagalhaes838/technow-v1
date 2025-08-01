@@ -2,14 +2,14 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Technow | Sua loja tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato | Technow</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Botão flutuante WhatsApp -->
+  <!-- Botão WhatsApp -->
   <a href="https://wa.me/5511994545207" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">💬</a>
 
   <header>
@@ -26,59 +26,29 @@
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <h2>Upgrade sua vida com tecnologia de ponta</h2>
-      <p>Notebooks, celulares, peças para upgrade e muito mais</p>
-      <a href="#" class="btn">Ver produtos</a>
-    </div>
-  </section>
-
-  <section class="categorias">
+  <section class="contato">
     <div class="container">
-      <h3>Categorias</h3>
-      <div class="grid">
-        <div class="categoria">
-          <img src="https://img.icons8.com/ios-filled/50/00ffcc/smartphone.png" alt="Celulares">
-          <span>Celulares</span>
-        </div>
-        <div class="categoria">
-          <img src="https://img.icons8.com/ios-filled/50/00ffcc/laptop.png" alt="Notebooks">
-          <span>Notebooks</span>
-        </div>
-        <div class="categoria">
-          <img src="https://img.icons8.com/ios-filled/50/00ffcc/computer.png" alt="Computadores">
-          <span>Computadores</span>
-        </div>
-        <div class="categoria">
-          <img src="https://img.icons8.com/ios-filled/50/00ffcc/processor.png" alt="Upgrades">
-          <span>Upgrades</span>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h2>Entre em Contato</h2>
+      <p>Ficou com dúvidas ou quer fazer um orçamento? Envie sua mensagem pra gente!</p>
 
-  <section class="produtos">
-    <div class="container">
-      <h3>Produtos em Destaque</h3>
-      <div class="grid">
-        <div class="produto">
-          <img src="https://via.placeholder.com/220x150" alt="Notebook Gamer X" />
-          <h4>Notebook Gamer X</h4>
-          <p>R$ 4.999,00</p>
-          <a href="https://wa.me/5511994545207" class="btn">Comprar via WhatsApp</a>
-        </div>
-        <div class="produto">
-          <img src="https://via.placeholder.com/220x150" alt="Smartphone Pro 12" />
-          <h4>Smartphone Pro 12</h4>
-          <p>R$ 2.799,00</p>
-          <a href="https://wa.me/5511994545207" class="btn">Comprar via WhatsApp</a>
-        </div>
-        <div class="produto">
-          <img src="https://via.placeholder.com/220x150" alt="Placa de Vídeo RTX 4060" />
-          <h4>Placa de Vídeo RTX 4060</h4>
-          <p>R$ 3.299,00</p>
-          <a href="https://wa.me/5511994545207" class="btn">Comprar via WhatsApp</a>
+      <div class="contato-grid">
+        <form action="mailto:paulosergioti511@gmail.com" method="POST" enctype="text/plain">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required />
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="mensagem">Mensagem:</label>
+          <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+          <button type="submit" class="btn">Enviar</button>
+        </form>
+
+        <div class="info-contato">
+          <h3>Informações</h3>
+          <p><strong>WhatsApp:</strong> (11) 99454-5207</p>
+          <p><strong>Email:</strong> paulosergioti511@gmail.com</p>
         </div>
       </div>
     </div>
