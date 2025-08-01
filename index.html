@@ -8,13 +8,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a href="https://wa.me/55SEUNUMERO" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+    💬
+  </a>
+
   <header>
-    <div class="container">
+    <div class="container header-content">
       <h1 class="logo">Technow</h1>
       <nav>
-        <ul>
+        <ul class="menu">
           <li><a href="#">Home</a></li>
           <li><a href="#">Produtos</a></li>
+          <li><a href="#">Categorias</a></li>
           <li><a href="#">Contato</a></li>
         </ul>
       </nav>
@@ -22,9 +29,9 @@
   </header>
 
   <section class="hero">
-    <div class="container">
+    <div class="container hero-content">
       <h2>Upgrade sua vida com tecnologia de ponta</h2>
-      <p>Notebooks, celulares, peças e muito mais</p>
+      <p>Notebooks, celulares, peças para upgrade e muito mais</p>
       <a href="#" class="btn">Ver produtos</a>
     </div>
   </section>
@@ -33,10 +40,22 @@
     <div class="container">
       <h3>Categorias</h3>
       <div class="grid">
-        <div class="categoria">Celulares</div>
-        <div class="categoria">Notebooks</div>
-        <div class="categoria">Computadores</div>
-        <div class="categoria">Upgrades</div>
+        <div class="categoria">
+          <img src="https://img.icons8.com/ios-filled/50/00ffcc/smartphone.png" alt="Celulares">
+          <span>Celulares</span>
+        </div>
+        <div class="categoria">
+          <img src="https://img.icons8.com/ios-filled/50/00ffcc/laptop.png" alt="Notebooks">
+          <span>Notebooks</span>
+        </div>
+        <div class="categoria">
+          <img src="https://img.icons8.com/ios-filled/50/00ffcc/computer.png" alt="Computadores">
+          <span>Computadores</span>
+        </div>
+        <div class="categoria">
+          <img src="https://img.icons8.com/ios-filled/50/00ffcc/processor.png" alt="Upgrades">
+          <span>Upgrades</span>
+        </div>
       </div>
     </div>
   </section>
@@ -46,16 +65,22 @@
       <h3>Produtos em Destaque</h3>
       <div class="grid">
         <div class="produto">
-          <img src="https://via.placeholder.com/200" alt="Produto" />
+          <img src="https://via.placeholder.com/220x150" alt="Notebook Gamer X" />
           <h4>Notebook Gamer X</h4>
           <p>R$ 4.999,00</p>
-          <a href="https://wa.me/SEUNUMERO" class="btn">Comprar via WhatsApp</a>
+          <a href="https://wa.me/55SEUNUMERO" class="btn">Comprar via WhatsApp</a>
         </div>
         <div class="produto">
-          <img src="https://via.placeholder.com/200" alt="Produto" />
+          <img src="https://via.placeholder.com/220x150" alt="Smartphone Pro 12" />
           <h4>Smartphone Pro 12</h4>
           <p>R$ 2.799,00</p>
-          <a href="https://wa.me/SEUNUMERO" class="btn">Comprar via WhatsApp</a>
+          <a href="https://wa.me/55SEUNUMERO" class="btn">Comprar via WhatsApp</a>
+        </div>
+        <div class="produto">
+          <img src="https://via.placeholder.com/220x150" alt="Placa de Vídeo RTX 4060" />
+          <h4>Placa de Vídeo RTX 4060</h4>
+          <p>R$ 3.299,00</p>
+          <a href="https://wa.me/55SEUNUMERO" class="btn">Comprar via WhatsApp</a>
         </div>
       </div>
     </div>
@@ -63,270 +88,23 @@
 
   <footer>
     <div class="container">
-      <p>© 2025 Technow. Todos os direitos reservados.</p>
+      <div class="footer-grid">
+        <div>
+          <h4>Technow</h4>
+          <p>Soluções tecnológicas com qualidade e confiança.</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p>WhatsApp: (XX) XXXXX-XXXX</p>
+          <p>Email: contato@technow.com</p>
+        </div>
+        <div>
+          <h4>Redes Sociais</h4>
+          <p>@technow_oficial</p>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Technow. Todos os direitos reservados.</p>
     </div>
   </footer>
-</body>
-</html>
-      pointer-events: none;
-    }
-    #cart-panel {
-      position: absolute; top: 0; right: -100%;
-      width: 320px; height: 100%;
-      background-color: #1f2937;
-      transition: right 0.4s ease;
-      pointer-events: auto;
-      box-shadow: -4px 0 15px rgba(0,0,0,0.6);
-      overflow-y: auto;
-    }
-    #cart.show #cart-overlay {
-      opacity: 1; pointer-events: auto;
-    }
-    #cart.show #cart-panel {
-      right: 0; animation: slideIn 0.4s ease;
-    }
-    @keyframes slideIn {
-      from { right: -320px; opacity: 0; }
-      to { right: 0; opacity: 1; }
-    }
-    .remove-btn {
-      color: #f87171;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .remove-btn:hover {
-      transform: scale(1.1);
-      color: #ef4444;
-    }
-  </style>
-</head>
-
-<body class="bg-dark text-light dark:bg-black dark:text-white">
-  <div id="tsparticles" class="fixed top-0 left-0 w-full h-full -z-10"></div>
-  <div id="scroll-bar"></div>
-
-  <header class="fixed top-0 w-full z-50 header-neon border-b border-gray-800">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-4">
-      <div class="flex items-center gap-2 animate-fadein">
-        <i class="fas fa-microchip text-neon text-2xl animate-pulse glow-icon"></i>
-        <h1 class="text-2xl font-extrabold neon-text logo-neon-shadow">Technowbrasil</h1>
-      </div>
-      <nav id="desktop-menu" class="flex gap-6 font-semibold text-sm mt-4 md:mt-0">
-        <a href="#categorias" class="hover:text-neon glow-icon transition-hover">Categorias</a>
-        <a href="#produtos" class="hover:text-neon glow-icon transition-hover">Produtos</a>
-        <a href="#noticias" class="hover:text-neon glow-icon transition-hover">Notícias</a>
-        <a href="#newsletter" class="hover:text-neon glow-icon transition-hover">Newsletter</a>
-        <a href="#contato" class="hover:text-neon glow-icon transition-hover">Contato</a>
-        <a href="#feedback" class="hover:text-neon glow-icon transition-hover">Feedback</a>
-      </nav>
-      <div class="flex gap-4 mt-4 md:mt-0 items-center">
-        <button onclick="toggleTheme()" class="text-neon text-xl glow-icon transition-hover"><i class="fas fa-moon"></i></button>
-        <button onclick="toggleCart()" class="relative glow-icon">
-          <i class="fas fa-shopping-cart text-neon text-2xl"></i>
-          <span id="cart-count" class="absolute -top-1 -right-2 bg-red-500 text-white rounded-full text-xs px-2">0</span>
-        </button>
-        <button onclick="toggleMenu()" class="md:hidden text-neon text-xl glow-icon transition-hover"><i class="fas fa-bars"></i></button>
-      </div>
-    </div>
-    <nav id="mobile-menu" class="bg-dark px-6 pb-4 font-semibold text-sm">
-      <a href="#categorias" class="hover:text-neon py-1 transition-hover">Categorias</a>
-      <a href="#produtos" class="hover:text-neon py-1 transition-hover">Produtos</a>
-      <a href="#noticias" class="hover:text-neon py-1 transition-hover">Notícias</a>
-      <a href="#newsletter" class="hover:text-neon py-1 transition-hover">Newsletter</a>
-      <a href="#contato" class="hover:text-neon py-1 transition-hover">Contato</a>
-      <a href="#feedback" class="hover:text-neon py-1 transition-hover">Feedback</a>
-    </nav>
-  <main class="pt-24">
-    <section id="categorias" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark parallax" data-aos="fade-up">
-      <h2 class="text-4xl font-extrabold mb-10 text-neon text-center">Categorias</h2>
-      <div class="flex justify-center flex-wrap gap-4 max-w-xl mx-auto">
-        <button onclick="filterCategory('all')" class="neon-btn">Todas</button>
-        <button onclick="filterCategory('smartphone')" class="neon-btn">Smartphones</button>
-        <button onclick="filterCategory('laptop')" class="neon-btn">Laptops</button>
-        <button onclick="filterCategory('acessorio')" class="neon-btn">Acessórios</button>
-      </div>
-    </section>
-
-    <section id="produtos" class="py-16 px-6 bg-gradient-to-b from-dark via-black to-dark parallax" data-aos="fade-up">
-      <h2 class="text-4xl font-extrabold mb-10 text-neon text-center">Produtos em Destaque</h2>
-      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto"></div>
-    </section>
-
-    <section id="noticias" class="py-20 bg-black text-white px-6 parallax" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-10 text-highlight text-center">📰 Notícias Tecnológicas</h2>
-      <!-- Seus cards de notícia originais aqui -->
-    </section>
-
-    <section id="newsletter" class="py-16 bg-black text-white px-6 parallax" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-4 text-highlight text-center">Receba novidades por e‑mail</h2>
-      <p class="text-gray-400 mb-6 text-center">Cadastre‑se para promoções e lançamentos</p>
-      <form action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-md mx-auto flex gap-2">
-        <!-- Seu formulário newsletter original -->
-      </form>
-    </section>
-
-    <section id="contato" class="py-16 bg-gray-900 text-white px-6 parallax" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-8 text-neon text-center">Fale com a gente</h2>
-      <form action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-2xl mx-auto grid gap-6">
-        <!-- Seu formulário de contato original -->
-      </form>
-    </section>
-
-    <section id="feedback" class="py-16 bg-gradient-to-b from-dark via-black to-dark text-white px-6 parallax" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-6 text-highlight text-center">Deixe seu Feedback</h2>
-      <form id="feedback-form" action="https://formsubmit.co/paulosergioti511@gmail.com" method="POST" class="max-w-2xl mx-auto grid gap-6">
-        <!-- Seu formulário de feedback original -->
-      </form>
-    </section>
-  </main>
-
-  <!-- Painel do Carrinho -->
-  <div id="cart">
-    <div id="cart-overlay" onclick="toggleCart()"></div>
-    <div id="cart-panel" class="p-6 h-full flex flex-col">
-      <h3 class="text-2xl font-bold text-neon mb-4">🛒 Seu Carrinho</h3>
-      <ul id="cart-items" class="mt-2 max-h-60 overflow-y-auto text-white space-y-4 flex-1"></ul>
-      <div class="mt-4 text-white">
-        <h4 class="font-bold">Total: <span id="total-price">R$ 0.00</span></h4>
-        <button class="neon-btn w-full mt-4">Finalizar Compra</button>
-      </div>
-      <button class="text-white mt-6 hover:underline" onclick="toggleCart()">Fechar</button>
-    </div>
-  </div>
-
-  <footer class="bg-dark text-white py-10">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
-      <p class="text-sm">&copy; 2025 Technowbrasil. Todos os direitos reservados.</p>
-      <div class="flex gap-4 mt-4 md:mt-0">
-        <a href="#" class="hover:text-neon"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="hover:text-neon"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/5511999999999" target="_blank" class="hover:text-neon"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <a href="https://wa.me/5511999999999" target="_blank"
-     class="fixed bottom-6 left-6 bg-green-500 p-3 rounded-full text-white text-xl shadow hover:bg-green-600 transition-hover z-50">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-  <script>
-    // AOS e tsParticles
-    AOS.init({ duration: 800, once: true });
-    tsParticles.load("tsparticles", {
-      background: { color: { value: "#0F0F1C" } },
-      fullScreen: { enable: false },
-      particles: {
-        color: { value: ["#3ABEFF", "#A855F7"] },
-        move: { enable: true, speed: 0.5 },
-        number: { value: 60, density: { enable: true, area: 800 } },
-        opacity: { value: 0.3 },
-        size: { value: { min: 1, max: 3 } },
-        links: { enable: true, distance: 120, color: "#3ABEFF", opacity: 0.3 }
-      },
-      detectRetina: true
-    });
-
-    // Produtos e Carrinho
-    const products = [
-      { id: 1, name: 'Smartphone TechOne 5G', price: 'R$ 3.299,00', category: 'smartphone', image: 'https://via.placeholder.com/500x300' },
-      { id: 2, name: 'Notebook HyperPro', price: 'R$ 5.899,00', category: 'laptop', image: 'https://via.placeholder.com/500x300' },
-      { id: 3, name: 'Smartwatch Active X', price: 'R$ 799,00', category: 'acessorio', image: 'https://via.placeholder.com/500x300' }
-    ];
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    function renderProducts(filter = 'all') {
-      const grid = document.getElementById('product-grid');
-      grid.innerHTML = '';
-      products.filter(p => filter === 'all' || p.category === filter).forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'bg-gray-900 rounded-xl overflow-hidden shadow-lg transition duration-300 neon-card';
-        card.setAttribute('data-aos','zoom-in');
-        card.innerHTML = `
-          <img src="${p.image}" alt="${p.name}" class="w-full h-48 object-cover transition-transform duration-500 ease-in-out group-hover:brightness-110">
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-neon">${p.name}</h3>
-            <p class="text-green-400 font-bold text-lg mb-4">${p.price}</p>
-            <button onclick="addToCart({ name: '${p.name}', price: '${p.price}' })" class="neon-btn">Adicionar ao Carrinho</button>
-          </div>`;
-        grid.appendChild(card);
-      });
-    }
-
-    function updateCart() {
-      document.getElementById('cart-count').textContent = cart.length;
-      const list = document.getElementById('cart-items');
-      list.innerHTML = '';
-      let total = 0;
-      cart.forEach((item, idx) => {
-        total += parseFloat(item.price.replace('R$', '').replace(',', '.'));
-        const li = document.createElement('li');
-        li.className = 'flex justify-between items-center';
-        li.innerHTML = `
-          <div>
-            <p class="font-semibold">${item.name}</p>
-            <p class="text-green-400">${item.price}</p>
-          </div>
-          <button class="remove-btn" onclick="removeItem(${idx})">
-            <i class="fas fa-trash-alt"></i>
-          </button>`;
-        list.appendChild(li);
-      });
-      document.getElementById('total-price').textContent = `R$ ${total.toFixed(2)}`;
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    function addToCart(item) {
-      cart.push(item);
-      updateCart();
-      toggleCart();
-    }
-
-    function removeItem(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-
-    function toggleCart() {
-      document.getElementById('cart').classList.toggle('show');
-    }
-
-    function filterCategory(category) {
-      renderProducts(category);
-    }
-
-    // Inicialização
-    renderProducts();
-    updateCart();
-
-    // Tema escuro/claro
-    (function initializeTheme() {
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = saved || (prefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-      document.body.classList.toggle('dark', theme === 'dark');
-    })();
-
-    // Scroll bar
-    window.addEventListener('scroll', () => {
-      const scroll = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      document.getElementById('scroll-bar').style.width = `${(scroll / height) * 100}%`;
-    });
-
-    // Menu mobile
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    function closeModal() {
-      const bg = document.getElementById('feedback-modal-bg');
-      if (bg) bg.style.display = 'none';
-    }
-  </script>
 </body>
 </html>
