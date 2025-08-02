@@ -6,6 +6,55 @@
   <title>Produtos | Technow</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .filtros {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .filtros button {
+      background: #1f1f1f;
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filtros button:hover,
+    .filtros button.active {
+      background: #00ffcc;
+      color: #000;
+    }
+
+    .busca {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .busca input {
+      padding: 10px;
+      width: 300px;
+      max-width: 90%;
+      border: none;
+      border-radius: 6px;
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid #00ffcc;
+    }
+
+    .produto {
+      display: none; /* escondido por padrão, JS revela */
+    }
+
+    .produto.show {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -31,10 +80,24 @@
       <h2>Nossos Produtos</h2>
       <p>Confira nossa linha de tecnologia e faça seu pedido pelo WhatsApp!</p>
 
-      <div class="grid">
+      <!-- Barra de busca -->
+      <div class="busca">
+        <input type="text" id="busca" placeholder="Buscar por nome...">
+      </div>
+
+      <!-- Filtros por categoria -->
+      <div class="filtros">
+        <button class="filtro-btn active" data-categoria="todos">Todos</button>
+        <button class="filtro-btn" data-categoria="celulares">Celulares</button>
+        <button class="filtro-btn" data-categoria="notebooks">Notebooks</button>
+        <button class="filtro-btn" data-categoria="upgrades">Upgrades</button>
+      </div>
+
+      <!-- Grade de produtos -->
+      <div class="grid" id="lista-produtos">
 
         <!-- Produto 1 -->
-        <div class="produto">
+        <div class="produto show" data-categoria="notebooks" data-nome="notebook gamer x">
           <img src="https://via.placeholder.com/220x150" alt="Notebook Gamer X" />
           <h4>Notebook Gamer X</h4>
           <p>R$ 4.999,00</p>
@@ -42,7 +105,7 @@
         </div>
 
         <!-- Produto 2 -->
-        <div class="produto">
+        <div class="produto show" data-categoria="celulares" data-nome="smartphone pro 12">
           <img src="https://via.placeholder.com/220x150" alt="Smartphone Pro 12" />
           <h4>Smartphone Pro 12</h4>
           <p>R$ 2.799,00</p>
@@ -50,7 +113,7 @@
         </div>
 
         <!-- Produto 3 -->
-        <div class="produto">
+        <div class="produto show" data-categoria="upgrades" data-nome="placa de video rtx 4060">
           <img src="https://via.placeholder.com/220x150" alt="Placa de Vídeo RTX 4060" />
           <h4>Placa de Vídeo RTX 4060</h4>
           <p>R$ 3.299,00</p>
@@ -58,7 +121,7 @@
         </div>
 
         <!-- Produto 4 -->
-        <div class="produto">
+        <div class="produto show" data-categoria="upgrades" data-nome="hd ssd 1tb">
           <img src="https://via.placeholder.com/220x150" alt="HD SSD 1TB" />
           <h4>HD SSD 1TB</h4>
           <p>R$ 499,00</p>
@@ -66,7 +129,7 @@
         </div>
 
         <!-- Produto 5 -->
-        <div class="produto">
+        <div class="produto show" data-categoria="upgrades" data-nome="memoria ram 16gb ddr4">
           <img src="https://via.placeholder.com/220x150" alt="Memória RAM 16GB DDR4" />
           <h4>Memória RAM 16GB DDR4</h4>
           <p>R$ 349,00</p>
@@ -97,6 +160,44 @@
       <p class="copyright">© 2025 Technow. Todos os direitos reservados.</p>
     </div>
   </footer>
+
+  <script>
+    // Filtro por categoria
+    const botoesFiltro = document.querySelectorAll('.filtro-btn');
+    const produtos = document.querySelectorAll('.produto');
+
+    botoesFiltro.forEach(botao => {
+      botao.addEventListener('click', () => {
+        document.querySelector('.filtro-btn.active').classList.remove('active');
+        botao.classList.add('active');
+        const categoria = botao.getAttribute('data-categoria');
+
+        produtos.forEach(produto => {
+          const cat = produto.getAttribute('data-categoria');
+          if (categoria === 'todos' || cat === categoria) {
+            produto.classList.add('show');
+          } else {
+            produto.classList.remove('show');
+          }
+        });
+      });
+    });
+
+    // Filtro por busca
+    const campoBusca = document.getElementById('busca');
+    campoBusca.addEventListener('input', () => {
+      const termo = campoBusca.value.toLowerCase();
+
+      produtos.forEach(produto => {
+        const nome = produto.getAttribute('data-nome');
+        if (nome.includes(termo)) {
+          produto.classList.add('show');
+        } else {
+          produto.classList.remove('show');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
