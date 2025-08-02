@@ -1,203 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Produtos | Technow</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    .filtros {
-      margin-top: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .filtros button {
-      background: #1f1f1f;
-      border: 1px solid #00ffcc;
-      color: #00ffcc;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .filtros button:hover,
-    .filtros button.active {
-      background: #00ffcc;
-      color: #000;
-    }
-
-    .busca {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .busca input {
-      padding: 10px;
-      width: 300px;
-      max-width: 90%;
-      border: none;
-      border-radius: 6px;
-      background: #1a1a1a;
-      color: #fff;
-      border: 1px solid #00ffcc;
-    }
-
-    .produto {
-      display: none; /* escondido por padrão, JS revela */
-    }
-
-    .produto.show {
-      display: block;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+  <script src="init-firebase.js"></script>
 
-  <!-- Botão WhatsApp -->
-  <a href="https://wa.me/5511994545207" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">💬</a>
-
-  <header>
-    <div class="container header-content">
-      <h1 class="logo">Technow</h1>
-      <nav>
-        <ul class="menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="produtos.html">Produtos</a></li>
-          <li><a href="#">Categorias</a></li>
-          <li><a href="contato.html">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Menu e WhatsApp (igual ao resto do site) -->
 
   <section class="produtos">
     <div class="container">
       <h2>Nossos Produtos</h2>
-      <p>Confira nossa linha de tecnologia e faça seu pedido pelo WhatsApp!</p>
-
-      <!-- Barra de busca -->
       <div class="busca">
-        <input type="text" id="busca" placeholder="Buscar por nome...">
+        <input id="busca" placeholder="Buscar por nome…" />
       </div>
-
-      <!-- Filtros por categoria -->
       <div class="filtros">
         <button class="filtro-btn active" data-categoria="todos">Todos</button>
         <button class="filtro-btn" data-categoria="celulares">Celulares</button>
         <button class="filtro-btn" data-categoria="notebooks">Notebooks</button>
         <button class="filtro-btn" data-categoria="upgrades">Upgrades</button>
       </div>
-
-      <!-- Grade de produtos -->
-      <div class="grid" id="lista-produtos">
-
-        <!-- Produto 1 -->
-        <div class="produto show" data-categoria="notebooks" data-nome="notebook gamer x">
-          <img src="https://via.placeholder.com/220x150" alt="Notebook Gamer X" />
-          <h4>Notebook Gamer X</h4>
-          <p>R$ 4.999,00</p>
-          <a href="https://wa.me/5511994545207?text=Olá! Gostaria de saber mais sobre o Notebook Gamer X." class="btn">Comprar via WhatsApp</a>
-        </div>
-
-        <!-- Produto 2 -->
-        <div class="produto show" data-categoria="celulares" data-nome="smartphone pro 12">
-          <img src="https://via.placeholder.com/220x150" alt="Smartphone Pro 12" />
-          <h4>Smartphone Pro 12</h4>
-          <p>R$ 2.799,00</p>
-          <a href="https://wa.me/5511994545207?text=Olá! Gostaria de saber mais sobre o Smartphone Pro 12." class="btn">Comprar via WhatsApp</a>
-        </div>
-
-        <!-- Produto 3 -->
-        <div class="produto show" data-categoria="upgrades" data-nome="placa de video rtx 4060">
-          <img src="https://via.placeholder.com/220x150" alt="Placa de Vídeo RTX 4060" />
-          <h4>Placa de Vídeo RTX 4060</h4>
-          <p>R$ 3.299,00</p>
-          <a href="https://wa.me/5511994545207?text=Olá! Quero saber mais sobre a Placa de Vídeo RTX 4060." class="btn">Comprar via WhatsApp</a>
-        </div>
-
-        <!-- Produto 4 -->
-        <div class="produto show" data-categoria="upgrades" data-nome="hd ssd 1tb">
-          <img src="https://via.placeholder.com/220x150" alt="HD SSD 1TB" />
-          <h4>HD SSD 1TB</h4>
-          <p>R$ 499,00</p>
-          <a href="https://wa.me/5511994545207?text=Olá! Me fale mais sobre o HD SSD 1TB." class="btn">Comprar via WhatsApp</a>
-        </div>
-
-        <!-- Produto 5 -->
-        <div class="produto show" data-categoria="upgrades" data-nome="memoria ram 16gb ddr4">
-          <img src="https://via.placeholder.com/220x150" alt="Memória RAM 16GB DDR4" />
-          <h4>Memória RAM 16GB DDR4</h4>
-          <p>R$ 349,00</p>
-          <a href="https://wa.me/5511994545207?text=Olá! Me fale mais sobre a Memória RAM 16GB DDR4." class="btn">Comprar via WhatsApp</a>
-        </div>
-
-      </div>
+      <div id="lista-produtos" class="grid"></div>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4>Technow</h4>
-          <p>Soluções tecnológicas com qualidade e confiança.</p>
-        </div>
-        <div>
-          <h4>Contato</h4>
-          <p>WhatsApp: (11) 99454-5207</p>
-          <p>Email: paulosergioti511@gmail.com</p>
-        </div>
-        <div>
-          <h4>Redes Sociais</h4>
-          <p>@technow_oficial</p>
-        </div>
-      </div>
-      <p class="copyright">© 2025 Technow. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
   <script>
-    // Filtro por categoria
-    const botoesFiltro = document.querySelectorAll('.filtro-btn');
-    const produtos = document.querySelectorAll('.produto');
+    // Referência ao node
+    const prodRef = database.ref('produtos');
+    const lista = document.getElementById('lista-produtos');
+    const busca = document.getElementById('busca');
 
-    botoesFiltro.forEach(botao => {
-      botao.addEventListener('click', () => {
+    function renderProduto(key, p) {
+      const nome = p.nome.toLowerCase();
+      const produto = document.createElement('div');
+      produto.className = 'produto show';
+      produto.dataset.categoria = p.categoria;
+      produto.dataset.nome = nome;
+      produto.innerHTML = `
+        <img src="${p.imagem}" alt="${p.nome}" />
+        <h4>${p.nome}</h4>
+        <p>R$ ${p.preco}</p>
+        <a href="https://wa.me/5511994545207?text=Olá! Quero saber sobre: ${p.nome}" class="btn">Comprar via WhatsApp</a>
+      `;
+      lista.appendChild(produto);
+    }
+
+    prodRef.on('value', snapshot => {
+      lista.innerHTML = '';
+      snapshot.forEach(item => renderProduto(item.key, item.val()));
+      filtrar();
+    });
+
+    // Busca e filtros – igual à versão local anterior
+    document.querySelectorAll('.filtro-btn').forEach(btn => {
+      btn.onclick = () => {
         document.querySelector('.filtro-btn.active').classList.remove('active');
-        botao.classList.add('active');
-        const categoria = botao.getAttribute('data-categoria');
-
-        produtos.forEach(produto => {
-          const cat = produto.getAttribute('data-categoria');
-          if (categoria === 'todos' || cat === categoria) {
-            produto.classList.add('show');
-          } else {
-            produto.classList.remove('show');
-          }
-        });
-      });
+        btn.classList.add('active');
+        filtrar();
+      };
     });
 
-    // Filtro por busca
-    const campoBusca = document.getElementById('busca');
-    campoBusca.addEventListener('input', () => {
-      const termo = campoBusca.value.toLowerCase();
+    busca.oninput = filtrar;
 
-      produtos.forEach(produto => {
-        const nome = produto.getAttribute('data-nome');
-        if (nome.includes(termo)) {
-          produto.classList.add('show');
-        } else {
-          produto.classList.remove('show');
-        }
+    function filtrar() {
+      const termo = busca.value.toLowerCase();
+      const catSel = document.querySelector('.filtro-btn.active').dataset.categoria;
+      document.querySelectorAll('.produto').forEach(prod => {
+        const nm = prod.dataset.nome;
+        const cat = prod.dataset.categoria;
+        const okBusca = nm.includes(termo);
+        const okCat = catSel === 'todos' || cat === catSel;
+        prod.classList.toggle('show', okBusca && okCat);
       });
-    });
+    }
   </script>
 
+  <!-- Rodapé padrão -->
 </body>
 </html>
