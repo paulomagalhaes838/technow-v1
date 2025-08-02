@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Admin | Technow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
+  <script src="init-firebase.js"></script>
+
+  <div class="container" style="padding:40px;">
+    <h2>Painel Admin</h2>
+    <div id="login">
+      <input id="email" placeholder="Email" /><input id="pass" type="password" placeholder="Senha" />
+      <button id="btn-login">Entrar</button>
+    </div>
+    <div id="painel" style="display:none;">
+      <h3>Produtos cadastrados</h3>
+      <div id="prod-list"></div>
+      <h3>Adicionar / Editar produto</h3>
+      <input id="p-nome" placeholder="Nome" /><input id="p-preco" placeholder="Preço" />
+      <input id="p-img" placeholder="URL da imagem" /><input id="p-cat" placeholder="Categoria" />
+      <button id="btn-salvar">Salvar</button>
+      <button id="btn-sair">Sair</button>
+    </div>
+  </div>
+
+  <script>
+    const btnLogin = document.getElementById('btn-login');
+    btnLogin.onclick = () => {
+      auth.signInWithEmailAndPassword(document.getElementById('email').value, document.getElementById('pass').value)
+        .then(_ => initPainel())
+        .catch(err => alert(err.message));
+    };
+
+    function initPainel() {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('painel').style.display = 'block';
+      loadProdutos();
+    }
+
+    function loadProdutos() {
+      database.ref('produtos').once('value', snap => {
+        const list = document.getElementById('prod-list');
+        list.innerHTML = '';
+        snap.forEach(child => {
+          const p = child.val();
+          const div = document.createElement('div');
+          div.textContent = `${p.nome} — R$ ${p.preco}`;
+          const btnE = document.createElement('button'); btnE.textContent = 'Editar';
+          const btnX = document.createElement('button'); btnX.textContent = 'Excluir';
+          btnE.onclick = () => carregarParaEdicao(child.key,p);
+          btnX.onclick = () => database.ref('produtos/'+child.key).remove();
+          div.append(btnE, btnX);
+          list.append(div);
+        });
+      });
+    }
+
+    function carregarParaEdicao(key,p) {
+      document.getElementById('p-nome').value = p.nome;
+      document.getElementById('p-preco').value = p.preco;
+      document.getElementById('p-img').value = p.imagem;
+      document.getElementById('p-cat').value = p.categoria;
+      document.getElementById('btn-salvar').dataset.key = key;
+    }
+
+    document.getElementById('btn-salvar').onclick = () => {
+      const p = {
+        nome: document.getElementById('p-nome').value,
+        preco: document.getElementById('p-preco').value,
+        imagem: document.getElementById('p-img').value,
+        categoria: document.getElementById('p-cat').value.toLowerCase()
+      };
+      const key = document.getElementById('btn-salvar').dataset.key;
+      if (key) database.ref('produtos/'+key).set(p);
+      else database.ref('produtos').push(p);
+      loadProdutos();
+      delete document.getElementById('btn-salvar').dataset.key;
+    };
+
+    document.getElementById('btn-sair').onclick = () => {
+      auth.signOut().then(_=>location.reload());
+    };
+
+    auth.onAuthStateChanged(user => {
+      if (user) initPainel();
+    });
+  </script>
+</body>
+</html>
