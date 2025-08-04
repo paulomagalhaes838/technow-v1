@@ -2,84 +2,305 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Produtos | Technow</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1f1f1f;
+      padding: 20px 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: #00ffcc;
+      margin: 0;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: #00ffcc;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00ffcc;
+      color: #000;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 24px;
+      text-decoration: none;
+      box-shadow: 0 0 10px #00ffcc;
+      z-index: 1000;
+    }
+
+    .busca {
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+
+    .busca input {
+      padding: 10px;
+      width: 300px;
+      max-width: 90%;
+      border-radius: 6px;
+      border: none;
+      background-color: #1a1a1a;
+      color: #fff;
+      border: 1px solid #00ffcc;
+    }
+
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .filtros button {
+      padding: 8px 16px;
+      border-radius: 5px;
+      background-color: #1f1f1f;
+      color: #00ffcc;
+      border: 1px solid #00ffcc;
+      cursor: pointer;
+    }
+
+    .filtros button.active,
+    .filtros button:hover {
+      background-color: #00ffcc;
+      color: #000;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .produto {
+      display: none;
+      background: #202020;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #2c2c2c;
+    }
+
+    .produto.show {
+      display: block;
+    }
+
+    .produto img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .btn {
+      background: #00ffcc;
+      color: #000;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #00ddb0;
+    }
+
+    footer {
+      background-color: #1f1f1f;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+      color: #aaa;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    footer h4 {
+      color: #00ffcc;
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
-  <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js"></script>
-  <script src="init-firebase.js"></script>
 
-  <!-- Menu e WhatsApp (igual ao resto do site) -->
+  <!-- Botão WhatsApp -->
+  <a href="https://wa.me/5511994545207" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">💬</a>
 
+  <!-- Cabeçalho -->
+  <header>
+    <div class="container header-content">
+      <h1 class="logo">Technow</h1>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="#">Categorias</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Seção de Produtos -->
   <section class="produtos">
     <div class="container">
       <h2>Nossos Produtos</h2>
       <div class="busca">
-        <input id="busca" placeholder="Buscar por nome…" />
+        <input id="busca" placeholder="Buscar por nome..." />
       </div>
+
       <div class="filtros">
         <button class="filtro-btn active" data-categoria="todos">Todos</button>
         <button class="filtro-btn" data-categoria="celulares">Celulares</button>
         <button class="filtro-btn" data-categoria="notebooks">Notebooks</button>
         <button class="filtro-btn" data-categoria="upgrades">Upgrades</button>
       </div>
+
       <div id="lista-produtos" class="grid"></div>
     </div>
   </section>
 
+  <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Technow</h4>
+          <p>Soluções tecnológicas com qualidade e confiança.</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <p>WhatsApp: (11) 99454-5207</p>
+          <p>Email: paulosergioti511@gmail.com</p>
+        </div>
+        <div>
+          <h4>Redes Sociais</h4>
+          <p>@technow_oficial</p>
+        </div>
+      </div>
+      <p class="copyright">© 2025 Technow. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script>
-    // Referência ao node
-    const prodRef = database.ref('produtos');
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_AUTH_DOMAIN",
+      databaseURL: "SUA_DATABASE_URL",
+      projectId: "SEU_PROJECT_ID",
+      storageBucket: "SEU_STORAGE_BUCKET",
+      messagingSenderId: "SEU_SENDER_ID",
+      appId: "SEU_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
+
+  <!-- Script de busca/filtro/renderização -->
+  <script>
     const lista = document.getElementById('lista-produtos');
     const busca = document.getElementById('busca');
 
-    function renderProduto(key, p) {
-      const nome = p.nome.toLowerCase();
+    function renderProduto(p) {
+      const nome = p.nome?.toLowerCase() || '';
       const produto = document.createElement('div');
       produto.className = 'produto show';
       produto.dataset.categoria = p.categoria;
       produto.dataset.nome = nome;
       produto.innerHTML = `
-        <img src="${p.imagem}" alt="${p.nome}" />
-        <h4>${p.nome}</h4>
-        <p>R$ ${p.preco}</p>
-        <a href="https://wa.me/5511994545207?text=Olá! Quero saber sobre: ${p.nome}" class="btn">Comprar via WhatsApp</a>
+        <img src="${p.imagem || 'https://via.placeholder.com/220x150'}" alt="${p.nome}" />
+        <h4>${p.nome || 'Produto sem nome'}</h4>
+        <p>R$ ${p.preco || '0,00'}</p>
+        <a href="https://wa.me/5511994545207?text=Olá! Gostaria de saber mais sobre o produto: ${p.nome}" class="btn">Comprar via WhatsApp</a>
       `;
       lista.appendChild(produto);
     }
 
-    prodRef.on('value', snapshot => {
+    firebase.database().ref('produtos').on('value', snapshot => {
       lista.innerHTML = '';
-      snapshot.forEach(item => renderProduto(item.key, item.val()));
+      snapshot.forEach(child => renderProduto(child.val()));
       filtrar();
     });
 
-    // Busca e filtros – igual à versão local anterior
     document.querySelectorAll('.filtro-btn').forEach(btn => {
-      btn.onclick = () => {
+      btn.addEventListener('click', () => {
         document.querySelector('.filtro-btn.active').classList.remove('active');
         btn.classList.add('active');
         filtrar();
-      };
+      });
     });
 
-    busca.oninput = filtrar;
+    busca.addEventListener('input', filtrar);
 
     function filtrar() {
       const termo = busca.value.toLowerCase();
       const catSel = document.querySelector('.filtro-btn.active').dataset.categoria;
       document.querySelectorAll('.produto').forEach(prod => {
-        const nm = prod.dataset.nome;
+        const nome = prod.dataset.nome;
         const cat = prod.dataset.categoria;
-        const okBusca = nm.includes(termo);
-        const okCat = catSel === 'todos' || cat === catSel;
-        prod.classList.toggle('show', okBusca && okCat);
+        const mostrar = (catSel === 'todos' || cat === catSel) && nome.includes(termo);
+        prod.classList.toggle('show', mostrar);
       });
     }
   </script>
-
-  <!-- Rodapé padrão -->
 </body>
 </html>
+
